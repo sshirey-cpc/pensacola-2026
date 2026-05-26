@@ -1,0 +1,1596 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="theme-color" content="#0a3b5c">
+<title>Pensacola Family Expedition · Camping Checklist</title>
+<style>
+  /* === RESET & BASE === */
+  * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+  
+  :root {
+    --navy: #0a3b5c;
+    --navy-dark: #062a44;
+    --sand: #e8d5a8;
+    --sand-light: #f5ebd3;
+    --sand-paper: #faf5e8;
+    --sun: #e89546;
+    --sun-deep: #c66f1e;
+    --coral: #d94e3c;
+    --sea: #2b7a7a;
+    --sea-deep: #1d5555;
+    --ink: #1a1a1a;
+    --soft-ink: #4a4a4a;
+    --line: #d4c4a0;
+    --check-green: #2b8a4a;
+  }
+  
+  html { -webkit-text-size-adjust: 100%; }
+  
+  body {
+    font-family: 'Georgia', 'Iowan Old Style', serif;
+    background: var(--sand-paper);
+    color: var(--ink);
+    line-height: 1.5;
+    min-height: 100vh;
+    overflow-x: hidden;
+    background-image: 
+      radial-gradient(circle at 20% 10%, rgba(232, 149, 70, 0.04) 0%, transparent 50%),
+      radial-gradient(circle at 80% 70%, rgba(43, 122, 122, 0.04) 0%, transparent 50%);
+  }
+  
+  /* === COVER / HEADER === */
+  .cover {
+    background: var(--navy);
+    color: var(--sand-light);
+    padding: 28px 24px 32px;
+    position: relative;
+    overflow: hidden;
+    border-bottom: 4px solid var(--sun);
+  }
+  
+  .cover::before {
+    content: '';
+    position: absolute;
+    top: -40px;
+    right: -40px;
+    width: 200px;
+    height: 200px;
+    background: radial-gradient(circle, var(--sun) 0%, transparent 60%);
+    opacity: 0.25;
+  }
+  
+  .cover::after {
+    content: '';
+    position: absolute;
+    bottom: -20px;
+    left: -20px;
+    width: 160px;
+    height: 160px;
+    background: radial-gradient(circle, var(--sea) 0%, transparent 60%);
+    opacity: 0.2;
+  }
+  
+  .badge {
+    display: inline-block;
+    font-family: 'Courier New', monospace;
+    font-size: 11px;
+    letter-spacing: 2.5px;
+    color: var(--sun);
+    text-transform: uppercase;
+    margin-bottom: 12px;
+    border: 1px solid var(--sun);
+    padding: 4px 10px;
+    border-radius: 2px;
+  }
+  
+  h1 {
+    font-family: 'Georgia', serif;
+    font-size: 36px;
+    line-height: 1.0;
+    font-weight: 900;
+    letter-spacing: -1.5px;
+    margin-bottom: 10px;
+    position: relative;
+    z-index: 1;
+  }
+  
+  h1 .accent {
+    color: var(--sun);
+    font-style: italic;
+  }
+  
+  .subtitle {
+    font-family: 'Courier New', monospace;
+    font-size: 12px;
+    color: var(--sand);
+    margin-bottom: 18px;
+    opacity: 0.9;
+    letter-spacing: 0.5px;
+  }
+  
+  .trip-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6px 16px;
+    font-size: 13px;
+    margin-top: 14px;
+    padding-top: 16px;
+    border-top: 1px dashed rgba(232, 213, 168, 0.3);
+  }
+  
+  .stat {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  
+  .stat-icon {
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
+  }
+  
+  .stat-label {
+    font-family: 'Courier New', monospace;
+    font-size: 10px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--sun);
+    opacity: 0.9;
+  }
+  
+  .stat-value {
+    font-size: 13px;
+    font-weight: 600;
+  }
+  
+  /* === NAVIGATION === */
+  .nav-tabs {
+    background: var(--navy-dark);
+    padding: 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  }
+  
+  .nav-tabs::-webkit-scrollbar { display: none; }
+  
+  .nav-inner {
+    display: flex;
+    min-width: max-content;
+  }
+  
+  .tab {
+    background: none;
+    border: none;
+    color: var(--sand);
+    padding: 14px 18px;
+    font-family: 'Courier New', monospace;
+    font-size: 11px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    cursor: pointer;
+    border-bottom: 3px solid transparent;
+    transition: all 0.2s;
+    font-weight: 700;
+    white-space: nowrap;
+    opacity: 0.55;
+  }
+  
+  .tab.active {
+    color: var(--sun);
+    border-bottom-color: var(--sun);
+    opacity: 1;
+  }
+  
+  .tab:active { transform: scale(0.97); }
+  
+  /* === MAIN CONTENT === */
+  main {
+    padding: 0;
+    max-width: 720px;
+    margin: 0 auto;
+  }
+  
+  .section { display: none; }
+  .section.active { display: block; animation: fadeIn 0.25s ease-out; }
+  
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  
+  /* === PROGRESS BAR === */
+  .progress-card {
+    background: var(--sand-light);
+    margin: 0;
+    padding: 20px 24px;
+    border-bottom: 1px solid var(--line);
+    position: sticky;
+    top: 43px;
+    z-index: 50;
+  }
+  
+  .progress-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 10px;
+  }
+  
+  .progress-name {
+    font-family: 'Georgia', serif;
+    font-size: 22px;
+    font-weight: 900;
+    color: var(--navy);
+    letter-spacing: -0.5px;
+  }
+  
+  .progress-count {
+    font-family: 'Courier New', monospace;
+    font-size: 14px;
+    color: var(--sun-deep);
+    font-weight: 700;
+  }
+  
+  .progress-bar {
+    height: 8px;
+    background: rgba(10, 59, 92, 0.1);
+    border-radius: 4px;
+    overflow: hidden;
+    position: relative;
+  }
+  
+  .progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--sea) 0%, var(--sun) 100%);
+    border-radius: 4px;
+    transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .progress-fill::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+    animation: shimmer 2s linear infinite;
+  }
+  
+  @keyframes shimmer {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
+  }
+  
+  /* === CATEGORIES === */
+  .category {
+    padding: 24px 24px 8px;
+  }
+  
+  .category-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 14px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid var(--navy);
+  }
+  
+  .category-icon {
+    width: 32px;
+    height: 32px;
+    flex-shrink: 0;
+  }
+  
+  .category-title {
+    font-family: 'Georgia', serif;
+    font-size: 19px;
+    font-weight: 900;
+    color: var(--navy);
+    letter-spacing: -0.3px;
+    flex: 1;
+  }
+  
+  .category-tag {
+    font-family: 'Courier New', monospace;
+    font-size: 9px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--sun-deep);
+    background: var(--sand);
+    padding: 3px 7px;
+    border-radius: 2px;
+  }
+  
+  /* === CHECKBOX ITEMS === */
+  .item {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 12px 0;
+    cursor: pointer;
+    transition: opacity 0.2s;
+    border-bottom: 1px dotted rgba(212, 196, 160, 0.5);
+    user-select: none;
+  }
+  
+  .item:last-child { border-bottom: none; }
+  
+  .item:active { opacity: 0.7; }
+  
+  .checkbox {
+    width: 24px;
+    height: 24px;
+    border: 2px solid var(--navy);
+    border-radius: 4px;
+    background: white;
+    flex-shrink: 0;
+    margin-top: 1px;
+    position: relative;
+    transition: all 0.2s;
+  }
+  
+  .item.checked .checkbox {
+    background: var(--check-green);
+    border-color: var(--check-green);
+  }
+  
+  .item.checked .checkbox::after {
+    content: '';
+    position: absolute;
+    left: 6px;
+    top: 2px;
+    width: 7px;
+    height: 13px;
+    border: solid white;
+    border-width: 0 2.5px 2.5px 0;
+    transform: rotate(45deg);
+  }
+  
+  .item-content { flex: 1; min-width: 0; }
+  
+  .item-text {
+    font-size: 15px;
+    line-height: 1.4;
+    color: var(--ink);
+    font-family: 'Georgia', serif;
+  }
+  
+  .item-note {
+    font-family: 'Courier New', monospace;
+    font-size: 11px;
+    color: var(--soft-ink);
+    margin-top: 3px;
+    line-height: 1.4;
+    opacity: 0.8;
+  }
+  
+  .item.checked .item-text {
+    text-decoration: line-through;
+    color: var(--soft-ink);
+    opacity: 0.6;
+  }
+  
+  .item.checked .item-note { opacity: 0.4; }
+  
+  /* === SPECIAL CARDS === */
+  .info-card {
+    margin: 16px 24px;
+    background: var(--navy);
+    color: var(--sand-light);
+    padding: 18px 20px;
+    border-radius: 6px;
+    border-left: 4px solid var(--sun);
+  }
+  
+  .info-card-title {
+    font-family: 'Courier New', monospace;
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--sun);
+    margin-bottom: 8px;
+  }
+  
+  .info-card-body {
+    font-size: 14px;
+    line-height: 1.5;
+  }
+  
+  .info-card-body strong { color: var(--sun); }
+  
+  /* === RESET BUTTON === */
+  .actions {
+    padding: 20px 24px 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .reset-btn {
+    background: transparent;
+    color: var(--coral);
+    border: 1.5px solid var(--coral);
+    padding: 11px 16px;
+    font-family: 'Courier New', monospace;
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 700;
+    transition: all 0.2s;
+  }
+  
+  .reset-btn:active {
+    background: var(--coral);
+    color: white;
+  }
+  
+  /* === FOOTER === */
+  .footer {
+    background: var(--navy-dark);
+    color: var(--sand);
+    padding: 30px 24px;
+    text-align: center;
+    font-family: 'Courier New', monospace;
+    font-size: 10px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    opacity: 0.9;
+  }
+  
+  .footer .compass {
+    font-size: 28px;
+    margin-bottom: 12px;
+    color: var(--sun);
+  }
+  
+  /* === OVERVIEW CARDS === */
+  .overview-cards {
+    padding: 20px 24px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+  
+  .overview-card {
+    background: white;
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    padding: 14px 12px;
+    text-align: center;
+    box-shadow: 0 2px 8px rgba(10, 59, 92, 0.05);
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  
+  .overview-card:active {
+    transform: scale(0.97);
+    background: var(--sand-light);
+  }
+  
+  .overview-card-icon {
+    width: 36px;
+    height: 36px;
+    margin: 0 auto 8px;
+  }
+  
+  .overview-card-name {
+    font-family: 'Georgia', serif;
+    font-weight: 900;
+    font-size: 15px;
+    color: var(--navy);
+    margin-bottom: 4px;
+  }
+  
+  .overview-card-progress {
+    font-family: 'Courier New', monospace;
+    font-size: 10px;
+    color: var(--sun-deep);
+    letter-spacing: 1px;
+  }
+  
+  .overview-card-bar {
+    height: 4px;
+    background: rgba(10, 59, 92, 0.08);
+    border-radius: 2px;
+    margin-top: 8px;
+    overflow: hidden;
+  }
+  
+  .overview-card-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--sea), var(--sun));
+    transition: width 0.4s;
+  }
+  
+  /* === SCHEDULE === */
+  .schedule {
+    padding: 0 24px 30px;
+  }
+  
+  .day-card {
+    background: white;
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    padding: 14px 16px;
+    margin-bottom: 10px;
+    border-left: 4px solid var(--sea);
+    box-shadow: 0 1px 4px rgba(10, 59, 92, 0.04);
+  }
+  
+  .day-card.surf { border-left-color: var(--check-green); }
+  .day-card.charter { border-left-color: var(--sun); }
+  .day-card.water { border-left-color: var(--sea); }
+  .day-card.arrival { border-left-color: var(--navy); }
+  
+  .day-date {
+    font-family: 'Courier New', monospace;
+    font-size: 11px;
+    letter-spacing: 1.5px;
+    color: var(--sun-deep);
+    text-transform: uppercase;
+    font-weight: 700;
+    margin-bottom: 4px;
+  }
+  
+  .day-title {
+    font-family: 'Georgia', serif;
+    font-size: 17px;
+    font-weight: 900;
+    color: var(--navy);
+    margin-bottom: 6px;
+  }
+  
+  .day-desc {
+    font-size: 13px;
+    color: var(--soft-ink);
+    line-height: 1.5;
+  }
+  
+  /* === GEAR SHOPPING LIST === */
+  .gear-section {
+    padding: 20px 24px;
+  }
+  
+  .gear-card {
+    background: white;
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    padding: 14px;
+    margin-bottom: 10px;
+    box-shadow: 0 1px 4px rgba(10, 59, 92, 0.04);
+  }
+  
+  .gear-card.owned { background: var(--sand-light); opacity: 0.7; }
+  
+  .gear-name {
+    font-family: 'Georgia', serif;
+    font-weight: 900;
+    font-size: 15px;
+    color: var(--navy);
+    margin-bottom: 3px;
+  }
+  
+  .gear-meta {
+    font-family: 'Courier New', monospace;
+    font-size: 11px;
+    color: var(--soft-ink);
+    line-height: 1.5;
+  }
+  
+  .gear-price {
+    color: var(--sun-deep);
+    font-weight: 700;
+  }
+  
+  /* === PRINT === */
+  @media print {
+    .nav-tabs, .progress-card, .actions, .footer { display: none; }
+    .section { display: block !important; page-break-after: always; }
+    body { background: white; }
+    .cover { color: var(--navy); background: white; border-bottom: 2px solid var(--navy); }
+    .cover .badge { color: var(--navy); border-color: var(--navy); }
+    .cover .subtitle { color: var(--soft-ink); }
+    .cover .stat-label { color: var(--navy); }
+  }
+  
+  /* === LANDSCAPE / TABLET === */
+  @media (min-width: 600px) {
+    h1 { font-size: 44px; }
+    .cover { padding: 36px 32px 40px; }
+    .trip-stats { grid-template-columns: repeat(4, 1fr); }
+    .overview-cards { grid-template-columns: repeat(3, 1fr); }
+    .item-text { font-size: 16px; }
+  }
+  
+  @media (min-width: 900px) {
+    main { padding-bottom: 40px; }
+    .overview-cards { grid-template-columns: repeat(5, 1fr); }
+  }
+</style>
+</head>
+<body>
+
+<header class="cover">
+  <div class="badge">★ Family Vacation ★</div>
+  <h1>Pensacola<br><span class="accent">Family Expedition</span></h1>
+  <div class="subtitle">JUN 21–28 · 2026 · GULF ISLANDS NAT'L SEASHORE</div>
+  
+  <div class="trip-stats">
+    <div class="stat">
+      <svg class="stat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M3 21h18M5 21V8l7-5 7 5v13M9 9h.01M15 9h.01M9 13h.01M15 13h.01M9 17h.01M15 17h.01"/>
+      </svg>
+      <div>
+        <div class="stat-label">Site</div>
+        <div class="stat-value">Loop B · #1</div>
+      </div>
+    </div>
+    <div class="stat">
+      <svg class="stat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <rect x="3" y="4" width="18" height="18" rx="2"/>
+        <line x1="16" y1="2" x2="16" y2="6"/>
+        <line x1="8" y1="2" x2="8" y2="6"/>
+        <line x1="3" y1="10" x2="21" y2="10"/>
+      </svg>
+      <div>
+        <div class="stat-label">Dates</div>
+        <div class="stat-value">Jun 21–28</div>
+      </div>
+    </div>
+    <div class="stat">
+      <svg class="stat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+        <circle cx="9" cy="7" r="4"/>
+        <path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/>
+      </svg>
+      <div>
+        <div class="stat-label">Crew</div>
+        <div class="stat-value">5 Humans</div>
+      </div>
+    </div>
+    <div class="stat">
+      <svg class="stat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M12 2L2 22h20L12 2z"/>
+        <line x1="12" y1="9" x2="12" y2="14"/>
+      </svg>
+      <div>
+        <div class="stat-label">Shelter</div>
+        <div class="stat-value">DOD Home Base</div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<nav class="nav-tabs">
+  <div class="nav-inner">
+    <button class="tab active" data-section="overview">Overview</button>
+    <button class="tab" data-section="schedule">Schedule</button>
+    <button class="tab" data-section="shared">Family Gear</button>
+    <button class="tab" data-section="scott">Scott</button>
+    <button class="tab" data-section="ashley">Ashley</button>
+    <button class="tab" data-section="saja">Saja</button>
+    <button class="tab" data-section="olive">Olive</button>
+    <button class="tab" data-section="aya">Aya</button>
+    <button class="tab" data-section="buy">To Buy</button>
+  </div>
+</nav>
+
+<main>
+
+<!-- ============ OVERVIEW ============ -->
+<section class="section active" id="overview">
+  <div class="overview-cards" id="overview-grid"></div>
+  
+  <div class="info-card">
+    <div class="info-card-title">★ The Plan, Briefly</div>
+    <div class="info-card-body">
+      Tent camping at Loop B Site #1 — the shaded, tent-only loop closest to the Gulf. <strong>Surf lessons</strong> for Ashley and the girls, a <strong>6am inshore charter</strong> with Capt. Tony, <strong>kayaking</strong> Big Lagoon, a <strong>sunset glow paddle</strong>, and a whole lot of beach. New moon for the first half — <strong>stargazing</strong> will be excellent.
+    </div>
+  </div>
+  
+  <div class="info-card" style="background: var(--sea-deep);">
+    <div class="info-card-title">⚓ How This Works</div>
+    <div class="info-card-body">
+      Each person has their own checklist. Tap items to check them off — your progress saves automatically on this phone. Share the link with everyone so the whole crew can check their own stuff. Family Gear is the shared list (one person handles each item).
+    </div>
+  </div>
+</section>
+
+<!-- ============ SCHEDULE ============ -->
+<section class="section" id="schedule">
+  <div class="schedule">
+    <div class="info-card" style="margin: 16px 0 20px;">
+      <div class="info-card-title">★ Week Rhythm</div>
+      <div class="info-card-body">
+        Mornings = water (calm Gulf, no wind, fewer bugs). Midday = shade + pool/AC retreat. Evenings = beach walks, fires, stars.
+      </div>
+    </div>
+    
+    <div class="day-card arrival">
+      <div class="day-date">Sun · Jun 21 · Arrival</div>
+      <div class="day-title">Get to the Island</div>
+      <div class="day-desc">Drive in. Publix stop on Gulf Breeze Pkwy. Pitch camp. Sunset beach walk. Easy dinner.</div>
+    </div>
+    
+    <div class="day-card">
+      <div class="day-date">Mon · Jun 22 · Settle</div>
+      <div class="day-title">Find the Rhythm</div>
+      <div class="day-desc">Beach morning. Walk to Fort Pickens itself. First proper dinner. Lights out early.</div>
+    </div>
+    
+    <div class="day-card surf">
+      <div class="day-date">Tue · Jun 23 · 🏄 Surf Day</div>
+      <div class="day-title">Lesson with Innerlight</div>
+      <div class="day-desc">8am surf lesson for Ashley + girls. Grab boards for the week. Lunch on the boardwalk. Nap through the heat.</div>
+    </div>
+    
+    <div class="day-card surf">
+      <div class="day-date">Wed · Jun 24 · 🏄 Surf Practice</div>
+      <div class="day-title">Free Surf at Langdon</div>
+      <div class="day-desc">Morning surf with rented boards. Langdon Beach is steps from camp. Afternoon bike loop inside the seashore.</div>
+    </div>
+    
+    <div class="day-card charter">
+      <div class="day-date">Thu · Jun 25 · 🎣 Charter Day</div>
+      <div class="day-title">6am with Capt. Tony</div>
+      <div class="day-desc">Inshore charter, 4 hours. Trout, redfish, mackerel. Back by 11. Cook the catch over the fire that night.</div>
+    </div>
+    
+    <div class="day-card water">
+      <div class="day-date">Fri · Jun 26 · 🛶 Paddle Day</div>
+      <div class="day-title">Big Lagoon + Glow</div>
+      <div class="day-desc">Morning kayak at Big Lagoon. Pool afternoon. 7:30pm Glow Paddle sunset tour — LED boards, ~90 min.</div>
+    </div>
+    
+    <div class="day-card">
+      <div class="day-date">Sat · Jun 27 · Last Full Day</div>
+      <div class="day-title">Pick the Favorite</div>
+      <div class="day-desc">Last surf, last beach, family dinner in town. Back to camp for the final fire.</div>
+    </div>
+    
+    <div class="day-card arrival">
+      <div class="day-date">Sun · Jun 28 · Pack Out</div>
+      <div class="day-title">Head Home</div>
+      <div class="day-desc">Sunrise walk. Break camp by 10am checkout. Ruby Slipper breakfast in Pensacola. Long drive back.</div>
+    </div>
+  </div>
+</section>
+
+<!-- All checklist sections will be generated by JS below -->
+<div id="checklist-container"></div>
+
+<!-- ============ TO BUY ============ -->
+<section class="section" id="buy">
+  <div class="gear-section">
+    <div class="info-card" style="margin: 0 0 20px;">
+      <div class="info-card-title">★ Gear Acquisition</div>
+      <div class="info-card-body">
+        What's decided, what to buy, what to borrow. Mark items off as they arrive at the door.
+      </div>
+    </div>
+    
+    <div class="gear-card owned">
+      <div class="gear-name">✓ DOD Home Base Tent</div>
+      <div class="gear-meta">Already bought · <span class="gear-price">$449</span> · 17×17 ft, 9'10" peak, Canvo polycotton, integrated floor</div>
+    </div>
+    
+    <div class="gear-card" id="gear-power">
+      <div class="gear-name">EcoFlow River 2 + 60W Solar Panel Bundle</div>
+      <div class="gear-meta">Recommended buy · <span class="gear-price">~$259</span> · 256 Wh LiFePO4, brand-matched solar, useful beyond this trip</div>
+    </div>
+    
+    <div class="gear-card">
+      <div class="gear-name">2× Rechargeable Tent Fans</div>
+      <div class="gear-meta">Critical for FL June nights · <span class="gear-price">~$90</span> · Treva 10" or Coleman OneSource</div>
+    </div>
+    
+    <div class="gear-card">
+      <div class="gear-name">12×16 Rain/Sun Tarp + 4 Adjustable Poles</div>
+      <div class="gear-meta">Over picnic table · <span class="gear-price">~$60</span> · Kelty Noah or generic with proper rigging</div>
+    </div>
+    
+    <div class="gear-card">
+      <div class="gear-name">MSR Groundhog Stakes (8-pack)</div>
+      <div class="gear-meta">Stock stakes are weak in FL sand · <span class="gear-price">~$25</span></div>
+    </div>
+    
+    <div class="gear-card">
+      <div class="gear-name">Thermacell MR300 or E55</div>
+      <div class="gear-meta">No-see-um zone at picnic table · <span class="gear-price">~$30-45</span> · One refill kit included</div>
+    </div>
+    
+    <div class="gear-card">
+      <div class="gear-name">USB String Lights (warm white)</div>
+      <div class="gear-meta">Inside tent via E-port · <span class="gear-price">~$25</span> · Brightech Ambience Pro, 25 ft</div>
+    </div>
+    
+    <div class="gear-card">
+      <div class="gear-name">Rechargeable Lantern</div>
+      <div class="gear-meta">Picnic table light · <span class="gear-price">~$60</span> · BioLite AlpenGlow 500</div>
+    </div>
+    
+    <div class="gear-card">
+      <div class="gear-name">Headlamps w/ Red Mode (×5)</div>
+      <div class="gear-meta">Critical for turtle nesting season · <span class="gear-price">~$120</span> · 2 Black Diamond Spot + 3 Energizer Vision</div>
+    </div>
+    
+    <div class="gear-card">
+      <div class="gear-name">2 Queen Air Mattresses + 1 Twin</div>
+      <div class="gear-meta">Bedding · <span class="gear-price">~$150-200</span> · Intex/Coleman with built-in pump</div>
+    </div>
+    
+    <div class="gear-card">
+      <div class="gear-name">Self-Inflating Sleeping Pads (backup)</div>
+      <div class="gear-meta">If air mattresses fail · <span class="gear-price">~$70-100 each</span></div>
+    </div>
+    
+    <div class="gear-card">
+      <div class="gear-name">10×14 Footprint for Inner Tent</div>
+      <div class="gear-meta">Protects integrated floor · <span class="gear-price">~$30</span> · Cut polycro or tarp to size</div>
+    </div>
+    
+    <div class="gear-card">
+      <div class="gear-name">Picaridin 20% Spray (×2 bottles)</div>
+      <div class="gear-meta">Better than DEET for no-see-ums · <span class="gear-price">~$16</span></div>
+    </div>
+    
+    <div class="gear-card">
+      <div class="gear-name">Cooler (Large) + Drink Cooler</div>
+      <div class="gear-meta">Split food cooler from grab-cooler · <span class="gear-price">Hopefully owned</span></div>
+    </div>
+    
+    <div class="gear-card">
+      <div class="gear-name">Heavy-Duty 25ft Extension Cord</div>
+      <div class="gear-meta">Power station to tent via E-port · <span class="gear-price">~$25</span></div>
+    </div>
+    
+    <div class="gear-card">
+      <div class="gear-name">6-Outlet Power Strip</div>
+      <div class="gear-meta">Inside tent for charging · <span class="gear-price">~$15</span></div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="footer">
+  <div class="compass">⚓</div>
+  <div>Pensacola Family Vacation</div>
+  <div style="margin-top: 6px; opacity: 0.7;">Made for the Shirey Crew · June 2026</div>
+</footer>
+
+<script>
+// ============ DATA ============
+const PEOPLE = {
+  shared: {
+    name: 'Family Gear',
+    color: 'navy',
+    icon: '<path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>',
+    categories: [
+      {
+        title: 'Shelter & Sleep',
+        tag: 'BIG ITEMS',
+        items: [
+          { text: 'DOD Home Base Tent (in cargo)', note: 'Test pitch in yard 2 weeks before. Practice with Ashley.' },
+          { text: 'Tent stakes (MSR Groundhogs) + mallet' },
+          { text: 'Footprint tarp under tent' },
+          { text: '10×12 backup tarp', note: 'For unexpected weather, gear cover' },
+          { text: '12×16 rain/sun tarp + 4 poles', note: 'Over picnic table' },
+          { text: '50 ft paracord + tarp guylines' },
+          { text: 'Extra long sand stakes (8+)' },
+          { text: '2 queen air mattresses + pump' },
+          { text: '1 twin air mattress + pump' },
+          { text: 'Backup battery pump', note: 'When the AC pump dies at 9pm' },
+        ]
+      },
+      {
+        title: 'Power & Lights',
+        tag: 'ELECTRIC',
+        items: [
+          { text: 'EcoFlow River 2 power station (charged 100%)' },
+          { text: '60W solar panel + cable' },
+          { text: 'Car 12V charging cable' },
+          { text: 'AC charging cable' },
+          { text: '25 ft outdoor extension cord' },
+          { text: '6-outlet power strip' },
+          { text: 'USB string lights for tent ceiling' },
+          { text: 'Rechargeable lantern (BioLite AlpenGlow)' },
+          { text: '2× rechargeable tent fans' },
+          { text: 'Spare USB-C cables (×3)' },
+          { text: 'Phone car charger' },
+        ]
+      },
+      {
+        title: 'Kitchen & Food',
+        tag: 'COOK',
+        items: [
+          { text: 'Camp stove (Coleman 2-burner)' },
+          { text: 'Propane canisters (×3 minimum)' },
+          { text: 'Lighter + waterproof matches' },
+          { text: 'Big cooler (food)' },
+          { text: 'Drink cooler (separate)' },
+          { text: 'Cast iron skillet + lid' },
+          { text: 'Pot for boiling' },
+          { text: 'Coffee setup (French press + grinder + beans)' },
+          { text: 'Camp kettle' },
+          { text: 'Cutting board + knife set' },
+          { text: 'Spatula, tongs, big spoon' },
+          { text: 'Plates, bowls, mugs (×5 each)' },
+          { text: 'Utensils (×5 sets)' },
+          { text: 'Dish soap + sponges + drying towel' },
+          { text: 'Bin for dirty dishes' },
+          { text: 'Trash bags (×10 contractor strength)' },
+          { text: 'Ziplocs (gallon + quart)' },
+          { text: 'Aluminum foil' },
+          { text: 'Paper towels (×3 rolls)' },
+          { text: 'Salt, pepper, olive oil, hot sauce' },
+          { text: 'Cooking spray' },
+        ]
+      },
+      {
+        title: 'Fire & Outdoor',
+        tag: 'OUTSIDE',
+        items: [
+          { text: 'Firewood (or buy on site)' },
+          { text: 'Kindling + fire starters' },
+          { text: 'S\'mores kit', note: 'Marshmallows, chocolate, graham crackers' },
+          { text: 'Roasting sticks (×5)' },
+          { text: 'Camp chairs (×5)' },
+          { text: '10×10 EZ-up canopy', note: 'Day shade backup if tarp isn\'t enough' },
+          { text: 'Thermacell + refill cartridges' },
+          { text: 'Picaridin spray (×2)' },
+          { text: 'Citronella candles' },
+          { text: 'Hatchet for kindling' },
+          { text: 'Bucket', note: 'For dish water, fire safety, beach play' },
+        ]
+      },
+      {
+        title: 'Beach Day Gear',
+        tag: 'SAND',
+        items: [
+          { text: 'Beach chairs (×5)' },
+          { text: 'Beach umbrella (large)' },
+          { text: 'Beach blanket / large towel' },
+          { text: 'Boogie boards (×3)' },
+          { text: 'Beach toys for Aya', note: 'Sand castle kit, frisbee' },
+          { text: 'Beach bag / mesh bag for sandy gear' },
+          { text: 'Reef-safe sunscreen (lots)' },
+          { text: 'Aloe vera for after' },
+          { text: 'Snorkel/mask sets (×3)' },
+          { text: 'Footwear: water shoes for everyone' },
+        ]
+      },
+      {
+        title: 'First Aid & Health',
+        tag: 'JUST IN CASE',
+        items: [
+          { text: 'First aid kit (full)' },
+          { text: 'Tweezers (splinters, ticks)' },
+          { text: 'Tylenol + ibuprofen' },
+          { text: 'Benadryl (allergic reactions, sleep)' },
+          { text: 'Antihistamine cream' },
+          { text: 'Antibiotic ointment' },
+          { text: 'Bandaids (lots of sizes)' },
+          { text: 'Hydrocortisone for bug bites' },
+          { text: 'Aloe for sunburn' },
+          { text: 'Electrolyte powder (×10 packets)' },
+          { text: 'Sunscreen SPF 50+ (×3)' },
+          { text: 'Lip balm w/ SPF' },
+          { text: 'Eye drops' },
+          { text: 'Tums / Pepto' },
+        ]
+      },
+      {
+        title: 'Documents & Logistics',
+        tag: 'ESSENTIAL',
+        items: [
+          { text: 'Campground reservation printout' },
+          { text: 'Driver\'s licenses for all adults' },
+          { text: 'Health insurance cards' },
+          { text: 'Cash for firewood, ice, tips' },
+          { text: 'America the Beautiful pass', note: '$80, pays for itself this trip' },
+          { text: 'Surf lesson confirmation' },
+          { text: 'Charter confirmation' },
+          { text: 'Glow Paddle reservation' },
+          { text: 'Phone numbers list (paper backup)', note: 'In case phones die' },
+        ]
+      },
+    ]
+  },
+  
+  scott: {
+    name: 'Scott',
+    color: 'navy',
+    icon: '<circle cx="12" cy="7" r="4"/><path d="M5 21v-2a7 7 0 0 1 14 0v2"/>',
+    categories: [
+      {
+        title: 'Clothing',
+        tag: '7 DAYS',
+        items: [
+          { text: 'T-shirts / sun shirts (×5-7)' },
+          { text: 'Shorts (×4)' },
+          { text: 'Swim trunks (×2)' },
+          { text: 'Long-sleeve sun shirt', note: 'Dawn/dusk bug protection' },
+          { text: 'Pants (×1)', note: 'Cool evenings, bug protection' },
+          { text: 'Underwear + socks (×7)' },
+          { text: 'Light fleece / hoodie' },
+          { text: 'Rain jacket (light)' },
+          { text: 'Hat (sun)' },
+          { text: 'Hat (knit, for cool mornings)' },
+          { text: 'Sunglasses + spare pair' },
+          { text: 'Sandals / water shoes' },
+          { text: 'Sneakers' },
+        ]
+      },
+      {
+        title: 'Personal',
+        tag: 'DAILY USE',
+        items: [
+          { text: 'Toothbrush + toothpaste' },
+          { text: 'Deodorant' },
+          { text: 'Soap / body wash (biodegradable)' },
+          { text: 'Microfiber towel' },
+          { text: 'Razor' },
+          { text: 'Prescription meds (full week + 2 buffer days)' },
+          { text: 'Glasses + contacts + case' },
+          { text: 'Phone + charger' },
+          { text: 'Wallet, license, insurance card' },
+        ]
+      },
+      {
+        title: 'Adventure',
+        tag: 'GO GEAR',
+        items: [
+          { text: 'Surf rash guard' },
+          { text: 'Fishing license', note: 'Even on a charter — check FL rules' },
+          { text: 'Polarized sunglasses for charter' },
+          { text: 'Dry bag for charter day' },
+          { text: 'GoPro / camera + extra batteries' },
+          { text: 'Binoculars for bird watching' },
+          { text: 'Multitool / pocket knife' },
+        ]
+      },
+      {
+        title: 'Tech & Backups',
+        tag: 'CAMP LEAD',
+        items: [
+          { text: 'Laptop (if working any of the week)' },
+          { text: 'Headlamp + extra batteries' },
+          { text: 'Power bank (Anker, 20K)' },
+          { text: 'Roll of duct tape' },
+          { text: 'Zip ties (mixed sizes)' },
+          { text: 'Carabiners (×5)' },
+          { text: 'Bungee cords' },
+        ]
+      },
+      {
+        title: 'Specifically for Scott',
+        tag: '🎣',
+        items: [
+          { text: 'Coffee setup ready', note: 'You will be the first one up' },
+          { text: 'Notebook + pens', note: 'For trip journal, Betty Sanders notes' },
+          { text: 'Book to read' },
+          { text: 'A real moment of stillness', note: 'Aim for one sunrise alone on the beach' },
+        ]
+      },
+    ]
+  },
+  
+  ashley: {
+    name: 'Ashley',
+    color: 'coral',
+    icon: '<circle cx="12" cy="7" r="4"/><path d="M5 21v-2a7 7 0 0 1 14 0v2"/>',
+    categories: [
+      {
+        title: 'Clothing',
+        tag: '7 DAYS',
+        items: [
+          { text: 'T-shirts / tanks (×6)' },
+          { text: 'Shorts / skirts (×4)' },
+          { text: 'Swimsuits (×2)' },
+          { text: 'Coverup / sundress' },
+          { text: 'Long-sleeve sun shirt' },
+          { text: 'Light pants (×1)' },
+          { text: 'Underwear + socks (×7)' },
+          { text: 'Sleep clothes' },
+          { text: 'Light cardigan / hoodie' },
+          { text: 'Rain jacket' },
+          { text: 'Sun hat (wide brim)' },
+          { text: 'Sunglasses + spare' },
+          { text: 'Sandals + water shoes' },
+          { text: 'Sneakers' },
+        ]
+      },
+      {
+        title: 'Personal',
+        tag: 'DAILY USE',
+        items: [
+          { text: 'Toothbrush + toothpaste' },
+          { text: 'Skincare routine (simplified for camping)' },
+          { text: 'Sunscreen for face (gentle)' },
+          { text: 'Deodorant' },
+          { text: 'Hair ties + brush' },
+          { text: 'Microfiber towel' },
+          { text: 'Prescription meds' },
+          { text: 'Phone + charger' },
+        ]
+      },
+      {
+        title: 'Adventure (the surf week!)',
+        tag: '🏄',
+        items: [
+          { text: 'Surf rash guard / wetsuit top', note: 'Protects from board wax + sun' },
+          { text: 'Surf-friendly bikini bottoms (won\'t shift)' },
+          { text: 'Reef-safe sunscreen for surfing' },
+          { text: 'Hair tie + headband for ocean' },
+          { text: 'Waterproof phone pouch' },
+          { text: 'Dry bag' },
+          { text: 'Camera or phone for surf photos' },
+        ]
+      },
+      {
+        title: 'Just for Ashley',
+        tag: '💛',
+        items: [
+          { text: 'Book or kindle' },
+          { text: 'Journal if you want' },
+          { text: 'Favorite mug for camp coffee' },
+          { text: 'One thing that feels like home' },
+          { text: 'A real plan to actually surf', note: 'You signed up for this — go all in' },
+        ]
+      },
+    ]
+  },
+  
+  saja: {
+    name: 'Saja',
+    color: 'sun',
+    icon: '<circle cx="12" cy="7" r="4"/><path d="M5 21v-2a7 7 0 0 1 14 0v2"/>',
+    categories: [
+      {
+        title: 'Clothing',
+        tag: 'PART WEEK',
+        items: [
+          { text: 'T-shirts / tanks (×5)' },
+          { text: 'Shorts (×3)' },
+          { text: 'Swimsuits (×2)' },
+          { text: 'Coverup' },
+          { text: 'Long-sleeve for evening' },
+          { text: 'Underwear + socks' },
+          { text: 'Sleep clothes' },
+          { text: 'Hoodie or sweatshirt' },
+          { text: 'Light rain jacket' },
+          { text: 'Hat' },
+          { text: 'Sunglasses' },
+          { text: 'Sandals + sneakers' },
+          { text: 'Water shoes' },
+        ]
+      },
+      {
+        title: 'Personal',
+        tag: 'STUFF',
+        items: [
+          { text: 'Toothbrush + toothpaste' },
+          { text: 'Skincare' },
+          { text: 'Hair stuff' },
+          { text: 'Deodorant' },
+          { text: 'Towel' },
+          { text: 'Sunscreen' },
+          { text: 'Any meds' },
+          { text: 'Phone + charger + power bank' },
+        ]
+      },
+      {
+        title: 'Saja\'s Trip',
+        tag: '☀️',
+        items: [
+          { text: 'Book(s)' },
+          { text: 'Journal if you want' },
+          { text: 'Headphones', note: 'Wireless or wired — your call' },
+          { text: 'Music downloaded for offline' },
+          { text: 'Camera if you want pics', note: 'Phone works too' },
+          { text: 'Whatever you bring for the beach' },
+        ]
+      },
+      {
+        title: 'Notes',
+        tag: 'FYI',
+        items: [
+          { text: 'You\'ll have your own space at camp', note: 'Tent has room divider' },
+          { text: 'Surf lesson is Monday morning', note: 'Bring something to wear that won\'t fall off in waves' },
+          { text: 'Charter is 6am Wednesday', note: 'Optional — say if you want to skip and sleep in' },
+        ]
+      },
+    ]
+  },
+  
+  olive: {
+    name: 'Olive',
+    color: 'sea',
+    icon: '<circle cx="12" cy="7" r="4"/><path d="M5 21v-2a7 7 0 0 1 14 0v2"/>',
+    categories: [
+      {
+        title: 'Clothing',
+        tag: '7 DAYS',
+        items: [
+          { text: 'T-shirts (×6)' },
+          { text: 'Shorts (×4)' },
+          { text: 'Swimsuits (×2)' },
+          { text: 'Coverup' },
+          { text: 'Long-sleeve sun shirt' },
+          { text: 'Light pants for evening' },
+          { text: 'Underwear + socks (×7)' },
+          { text: 'Sleep clothes' },
+          { text: 'Hoodie' },
+          { text: 'Hat' },
+          { text: 'Sunglasses' },
+          { text: 'Sandals + water shoes + sneakers' },
+        ]
+      },
+      {
+        title: 'Personal',
+        tag: 'DAILY',
+        items: [
+          { text: 'Toothbrush + toothpaste' },
+          { text: 'Hair stuff' },
+          { text: 'Deodorant' },
+          { text: 'Towel' },
+          { text: 'Sunscreen' },
+          { text: 'Phone + charger' },
+        ]
+      },
+      {
+        title: 'Adventure',
+        tag: 'SURF + FISH',
+        items: [
+          { text: 'Rash guard for surfing' },
+          { text: 'Reef-safe sunscreen' },
+          { text: 'Hair tie / headband' },
+          { text: 'Dry bag if you have one' },
+          { text: 'Water bottle (reusable)' },
+        ]
+      },
+      {
+        title: 'Olive\'s Trip',
+        tag: '🌊',
+        items: [
+          { text: 'Books or kindle' },
+          { text: 'Journal' },
+          { text: 'Headphones' },
+          { text: 'Camera if you want' },
+          { text: 'Snacks you actually like', note: 'Camp food is camp food' },
+          { text: 'One activity for downtime', note: 'Cards, sketchbook, whatever' },
+        ]
+      },
+    ]
+  },
+  
+  aya: {
+    name: 'Aya',
+    color: 'sun',
+    icon: '<circle cx="12" cy="7" r="4"/><path d="M5 21v-2a7 7 0 0 1 14 0v2"/>',
+    categories: [
+      {
+        title: 'Aya\'s Clothes',
+        tag: '7 DAYS',
+        items: [
+          { text: 'T-shirts (×7)', note: 'You\'ll get sandy' },
+          { text: 'Shorts (×5)' },
+          { text: 'Swimsuits (×2)' },
+          { text: 'Long-sleeve sun shirt', note: 'For bugs at sunrise/sunset' },
+          { text: 'Light pants (×1)' },
+          { text: 'Underwear (×8)', note: 'Bring extras!' },
+          { text: 'Socks (×5)' },
+          { text: 'Pajamas (×2)' },
+          { text: 'Cozy hoodie' },
+          { text: 'Sun hat' },
+          { text: 'Sunglasses' },
+          { text: 'Water shoes + sandals + sneakers' },
+        ]
+      },
+      {
+        title: 'Aya\'s Stuff',
+        tag: 'DAILY',
+        items: [
+          { text: 'Toothbrush + toothpaste' },
+          { text: 'Hairbrush + ties' },
+          { text: 'Beach towel (a fun one!)' },
+          { text: 'Sunscreen (kid version)' },
+        ]
+      },
+      {
+        title: 'Beach + Adventure',
+        tag: '🏖️',
+        items: [
+          { text: 'Boogie board (your own!)' },
+          { text: 'Sand toys (bucket, shovel, molds)' },
+          { text: 'Rash guard for surf lesson' },
+          { text: 'Goggles' },
+          { text: 'Snorkel + mask (if you want)' },
+          { text: 'Water bottle with your name on it' },
+        ]
+      },
+      {
+        title: 'For Fun',
+        tag: '⭐',
+        items: [
+          { text: 'A book or two' },
+          { text: 'Cards, UNO, or a small game' },
+          { text: 'Colored pencils + small sketchbook', note: 'For drawing what you see' },
+          { text: 'Stuffie / comfort thing for sleeping' },
+          { text: 'Glow stick or two for nighttime', note: 'Special for the campsite!' },
+        ]
+      },
+      {
+        title: 'Special Things for Aya',
+        tag: '✨',
+        items: [
+          { text: 'Look for sea turtle tracks at sunrise', note: 'Mid-June is nesting season' },
+          { text: 'Look up at the stars on a moonless night', note: 'You can see the Milky Way' },
+          { text: 'Try to surf!', note: 'You can totally do this' },
+          { text: 'Ask Capt. Tony lots of questions', note: 'He loves answering them' },
+          { text: 'Find a perfect shell to bring home' },
+        ]
+      },
+    ]
+  },
+};
+
+// ============ STORAGE ============
+const STORAGE_KEY = 'ftpickens2026-v1';
+
+async function loadState() {
+  try {
+    const result = await window.storage.get(STORAGE_KEY);
+    return result ? JSON.parse(result.value) : {};
+  } catch (e) {
+    return {};
+  }
+}
+
+async function saveState(state) {
+  try {
+    await window.storage.set(STORAGE_KEY, JSON.stringify(state));
+  } catch (e) {
+    console.error('Save failed:', e);
+  }
+}
+
+let appState = {};
+
+// ============ ICONS ============
+const ICONS = {
+  'Shelter & Sleep': '<path d="M12 2L2 22h20L12 2z"/><line x1="12" y1="9" x2="12" y2="14"/>',
+  'Power & Lights': '<polyline points="12 2 12 7 9 10 12 13 12 22"/><circle cx="12" cy="10" r="2"/>',
+  'Kitchen & Food': '<path d="M6 2v6a3 3 0 0 0 6 0V2M9 8v14M18 2v20M18 8a3 3 0 0 0 0 6"/>',
+  'Fire & Outdoor': '<path d="M12 2c1 4-2 4-2 7a2 2 0 0 0 4 0c0-2-2-2-2-7zM6 14a6 6 0 0 0 12 0c0-4-2-6-2-6s-1 2-4 2-4-2-4-2-2 2-2 6z"/>',
+  'Beach Day Gear': '<circle cx="12" cy="8" r="3"/><path d="M12 11v3M3 18s2-2 4-2 3 2 5 2 3-2 5-2 4 2 4 2"/>',
+  'First Aid & Health': '<path d="M12 5v14M5 12h14"/><rect x="3" y="3" width="18" height="18" rx="3"/>',
+  'Documents & Logistics': '<path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="8" y1="13" x2="16" y2="13"/><line x1="8" y1="17" x2="13" y2="17"/>',
+  'Clothing': '<path d="M16 3l-4 4-4-4M20 5v15a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V5l4-2h8z"/>',
+  'Aya\'s Clothes': '<path d="M16 3l-4 4-4-4M20 5v15a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V5l4-2h8z"/>',
+  'Personal': '<circle cx="12" cy="8" r="4"/><path d="M4 22v-2a8 8 0 0 1 16 0v2"/>',
+  'Aya\'s Stuff': '<circle cx="12" cy="8" r="4"/><path d="M4 22v-2a8 8 0 0 1 16 0v2"/>',
+  'Adventure': '<path d="M3 12l9-9 9 9-9 9z"/><circle cx="12" cy="12" r="3"/>',
+  'Tech & Backups': '<rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/>',
+  'Specifically for Scott': '<path d="M12 2l3 7h7l-6 4 2 7-6-4-6 4 2-7-6-4h7z"/>',
+  'Just for Ashley': '<path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 1 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>',
+  'Adventure (the surf week!)': '<path d="M2 12s3-3 5-3 4 3 5 3 5-3 5-3 5 3 5 3 3-3 3-3M2 18s3-3 5-3 4 3 5 3 5-3 5-3 5 3 5 3 3-3 3-3"/>',
+  'Saja\'s Trip': '<circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4" y1="12" x2="2" y2="12"/><line x1="22" y1="12" x2="20" y2="12"/>',
+  'Olive\'s Trip': '<path d="M2 12s3-3 5-3 4 3 5 3 5-3 5-3 5 3 5 3 3-3 3-3"/><path d="M2 18s3-3 5-3 4 3 5 3 5-3 5-3 5 3 5 3 3-3 3-3"/>',
+  'Notes': '<path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/>',
+  'Beach + Adventure': '<circle cx="12" cy="8" r="3"/><path d="M3 18s2-2 4-2 3 2 5 2 3-2 5-2 4 2 4 2"/>',
+  'For Fun': '<path d="M12 2l3 7h7l-6 4 2 7-6-4-6 4 2-7-6-4h7z"/>',
+  'Special Things for Aya': '<path d="M12 2l3 7h7l-6 4 2 7-6-4-6 4 2-7-6-4h7z"/>',
+};
+
+function getIcon(title) {
+  return ICONS[title] || '<circle cx="12" cy="12" r="10"/>';
+}
+
+// ============ RENDER ============
+function renderChecklists() {
+  const container = document.getElementById('checklist-container');
+  container.innerHTML = '';
+  
+  Object.entries(PEOPLE).forEach(([key, person]) => {
+    const section = document.createElement('section');
+    section.className = 'section';
+    section.id = key;
+    
+    let html = `
+      <div class="progress-card">
+        <div class="progress-header">
+          <div class="progress-name">${person.name}</div>
+          <div class="progress-count" id="progress-${key}">0 / 0</div>
+        </div>
+        <div class="progress-bar">
+          <div class="progress-fill" id="fill-${key}" style="width: 0%"></div>
+        </div>
+      </div>
+    `;
+    
+    person.categories.forEach((cat, catIdx) => {
+      html += `
+        <div class="category">
+          <div class="category-header">
+            <svg class="category-icon" viewBox="0 0 24 24" fill="none" stroke="#0a3b5c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              ${getIcon(cat.title)}
+            </svg>
+            <div class="category-title">${cat.title}</div>
+            <div class="category-tag">${cat.tag}</div>
+          </div>
+      `;
+      
+      cat.items.forEach((item, itemIdx) => {
+        const id = `${key}__${catIdx}__${itemIdx}`;
+        html += `
+          <div class="item" data-id="${id}" data-person="${key}">
+            <div class="checkbox"></div>
+            <div class="item-content">
+              <div class="item-text">${item.text}</div>
+              ${item.note ? `<div class="item-note">↳ ${item.note}</div>` : ''}
+            </div>
+          </div>
+        `;
+      });
+      
+      html += `</div>`;
+    });
+    
+    html += `
+      <div class="actions">
+        <button class="reset-btn" data-reset="${key}">Reset ${person.name}'s List</button>
+      </div>
+    `;
+    
+    section.innerHTML = html;
+    container.appendChild(section);
+  });
+}
+
+function renderOverview() {
+  const grid = document.getElementById('overview-grid');
+  grid.innerHTML = '';
+  
+  Object.entries(PEOPLE).forEach(([key, person]) => {
+    const stats = getPersonStats(key);
+    const pct = stats.total === 0 ? 0 : Math.round((stats.checked / stats.total) * 100);
+    
+    const card = document.createElement('div');
+    card.className = 'overview-card';
+    card.dataset.section = key;
+    card.innerHTML = `
+      <svg class="overview-card-icon" viewBox="0 0 24 24" fill="none" stroke="#0a3b5c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        ${person.icon}
+      </svg>
+      <div class="overview-card-name">${person.name}</div>
+      <div class="overview-card-progress">${stats.checked} / ${stats.total} · ${pct}%</div>
+      <div class="overview-card-bar">
+        <div class="overview-card-fill" style="width: ${pct}%"></div>
+      </div>
+    `;
+    grid.appendChild(card);
+  });
+}
+
+function getPersonStats(personKey) {
+  let total = 0, checked = 0;
+  const person = PEOPLE[personKey];
+  person.categories.forEach((cat, catIdx) => {
+    cat.items.forEach((item, itemIdx) => {
+      total++;
+      const id = `${personKey}__${catIdx}__${itemIdx}`;
+      if (appState[id]) checked++;
+    });
+  });
+  return { total, checked };
+}
+
+function updateProgress(personKey) {
+  const stats = getPersonStats(personKey);
+  const pct = stats.total === 0 ? 0 : (stats.checked / stats.total) * 100;
+  const countEl = document.getElementById(`progress-${personKey}`);
+  const fillEl = document.getElementById(`fill-${personKey}`);
+  if (countEl) countEl.textContent = `${stats.checked} / ${stats.total}`;
+  if (fillEl) fillEl.style.width = pct + '%';
+}
+
+function updateAllProgress() {
+  Object.keys(PEOPLE).forEach(updateProgress);
+  renderOverview();
+}
+
+function applyChecks() {
+  document.querySelectorAll('.item').forEach(item => {
+    const id = item.dataset.id;
+    if (appState[id]) {
+      item.classList.add('checked');
+    } else {
+      item.classList.remove('checked');
+    }
+  });
+  updateAllProgress();
+}
+
+// ============ EVENT HANDLERS ============
+function showSection(sectionId) {
+  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  
+  const section = document.getElementById(sectionId);
+  const tab = document.querySelector(`.tab[data-section="${sectionId}"]`);
+  
+  if (section) section.classList.add('active');
+  if (tab) {
+    tab.classList.add('active');
+    // Scroll tab into view
+    tab.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+  }
+  
+  // Scroll to top of new section
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+// ============ INIT ============
+async function init() {
+  appState = await loadState();
+  
+  renderChecklists();
+  renderOverview();
+  applyChecks();
+  
+  // Tab navigation
+  document.querySelectorAll('.tab').forEach(tab => {
+    tab.addEventListener('click', () => showSection(tab.dataset.section));
+  });
+  
+  // Overview cards = shortcuts
+  document.querySelectorAll('.overview-card').forEach(card => {
+    card.addEventListener('click', () => showSection(card.dataset.section));
+  });
+  
+  // Checkbox toggles
+  document.addEventListener('click', async (e) => {
+    const item = e.target.closest('.item');
+    if (item) {
+      const id = item.dataset.id;
+      appState[id] = !appState[id];
+      item.classList.toggle('checked');
+      updateAllProgress();
+      await saveState(appState);
+      return;
+    }
+    
+    const resetBtn = e.target.closest('.reset-btn');
+    if (resetBtn) {
+      const personKey = resetBtn.dataset.reset;
+      const person = PEOPLE[personKey];
+      if (confirm(`Reset ${person.name}'s list? This unchecks everything for ${person.name}.`)) {
+        person.categories.forEach((cat, catIdx) => {
+          cat.items.forEach((item, itemIdx) => {
+            delete appState[`${personKey}__${catIdx}__${itemIdx}`];
+          });
+        });
+        applyChecks();
+        await saveState(appState);
+      }
+    }
+  });
+}
+
+init();
+</script>
+
+</body>
+</html>
