@@ -1216,6 +1216,62 @@
     margin-bottom: 14px;
     line-height: 1.5;
   }
+
+  /* === TO BUY EDIT MODE === */
+  #buy .buy-del, #buy .buy-add { display: none; }
+  body.edit-mode #buy .buy-del {
+    display: inline-block;
+    background: none;
+    border: 1.5px solid var(--coral);
+    color: var(--coral);
+    font-size: 13px;
+    line-height: 1;
+    cursor: pointer;
+    padding: 3px 7px;
+    border-radius: 3px;
+    margin-left: 8px;
+    font-weight: 900;
+    flex-shrink: 0;
+    align-self: flex-start;
+  }
+  body.edit-mode #buy .buy-del:active { background: var(--coral); color: white; }
+  body.edit-mode #buy .buy-add {
+    display: inline-block;
+    background: var(--sand-light);
+    border: 1.5px dashed var(--sun-deep);
+    color: var(--sun-deep);
+    font-family: 'Courier New', monospace;
+    font-size: 11px;
+    letter-spacing: 1px;
+    font-weight: 700;
+    padding: 8px 14px;
+    border-radius: 3px;
+    cursor: pointer;
+    margin-top: 10px;
+    width: 100%;
+    text-align: left;
+  }
+  body.edit-mode #buy .buy-add:active { background: var(--sand); }
+  body.edit-mode #buy .gear-card {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    cursor: pointer;
+  }
+  body.edit-mode #buy .gear-card > div:first-child { flex: 1; }
+  #buy .buy-edit-banner { display: none; }
+  body.edit-mode #buy .buy-edit-banner {
+    display: block;
+    background: var(--coral);
+    color: white;
+    padding: 10px 14px;
+    border-radius: 4px;
+    font-family: 'Courier New', monospace;
+    font-size: 11px;
+    letter-spacing: 0.5px;
+    margin-bottom: 14px;
+    line-height: 1.5;
+  }
 </style>
 </head>
 <body>
@@ -1644,69 +1700,15 @@
     <div class="info-card" style="margin: 0 0 20px;">
       <div class="info-card-title">★ Gear Acquisition</div>
       <div class="info-card-body">
-        What's done, what to buy, what to borrow. Mark off as they arrive.
+        What's done, what to buy, what to borrow. Toggle <strong>✏ Edit Mode</strong> (at the top of the Food tab or any person tab) to rename, delete, or add gear here.
       </div>
     </div>
-    
-    <div class="gear-card owned">
-      <div class="gear-name">✓ DOD Home Base Tent</div>
-      <div class="gear-meta">Already bought · <span class="gear-price">$449</span> · 17×17 ft, 9'10" peak, Canvo polycotton, integrated floor</div>
+
+    <div class="buy-edit-banner">
+      <strong>EDIT MODE</strong> · Tap a card to rename · Tap ✕ to delete · Tap <em style="font-style:normal; background:rgba(255,255,255,0.2); padding:1px 5px; border-radius:2px;">+ Add</em> to add new gear · Changes save on this device.
     </div>
-    
-    <div class="gear-card">
-      <div class="gear-name">EcoFlow River 2 + 60W Solar Panel Bundle</div>
-      <div class="gear-meta">Recommended buy · <span class="gear-price">~$259</span> · 256 Wh LiFePO4, useful beyond this trip</div>
-    </div>
-    
-    <div class="gear-card">
-      <div class="gear-name">2× Rechargeable Tent Fans</div>
-      <div class="gear-meta">Critical for FL June nights · <span class="gear-price">~$90</span> · Treva 10" or Coleman OneSource</div>
-    </div>
-    
-    <div class="gear-card">
-      <div class="gear-name">12×16 Rain/Sun Tarp + 4 Poles</div>
-      <div class="gear-meta">Over picnic table · <span class="gear-price">~$60</span></div>
-    </div>
-    
-    <div class="gear-card">
-      <div class="gear-name">MSR Groundhog Stakes (8-pack)</div>
-      <div class="gear-meta">Stock stakes weak in FL sand · <span class="gear-price">~$25</span></div>
-    </div>
-    
-    <div class="gear-card">
-      <div class="gear-name">Thermacell MR300 or E55</div>
-      <div class="gear-meta">No-see-um zone at picnic table · <span class="gear-price">~$30-45</span></div>
-    </div>
-    
-    <div class="gear-card">
-      <div class="gear-name">USB String Lights</div>
-      <div class="gear-meta">Inside tent via E-port · <span class="gear-price">~$25</span></div>
-    </div>
-    
-    <div class="gear-card">
-      <div class="gear-name">Rechargeable Lantern</div>
-      <div class="gear-meta">Picnic table light · <span class="gear-price">~$60</span></div>
-    </div>
-    
-    <div class="gear-card">
-      <div class="gear-name">Headlamps w/ Red Mode (×5)</div>
-      <div class="gear-meta">Turtle nesting season · <span class="gear-price">~$120</span></div>
-    </div>
-    
-    <div class="gear-card">
-      <div class="gear-name">2 Queen + 1 Twin Air Mattresses</div>
-      <div class="gear-meta">Bedding · <span class="gear-price">~$150-200</span></div>
-    </div>
-    
-    <div class="gear-card">
-      <div class="gear-name">10×14 Footprint Tarp</div>
-      <div class="gear-meta">Protects integrated floor · <span class="gear-price">~$30</span></div>
-    </div>
-    
-    <div class="gear-card">
-      <div class="gear-name">Picaridin 20% Spray (×2)</div>
-      <div class="gear-meta">Better than DEET for no-see-ums · <span class="gear-price">~$16</span></div>
-    </div>
+
+    <div id="buy-list"></div>
   </div>
 </section>
 
@@ -2998,5 +3000,116 @@ init();
 })();
 </script>
 
+<script>
+// === TO BUY PAGE — view + edit mode (self-contained, localStorage) ===
+(function () {
+  const BUY_DATA_KEY = 'pensacola_buy_data_v1';
+  let buyData = null;
+
+  const DEFAULT_BUY = [
+    { id: 'b-tent', owned: true, name: '✓ DOD Home Base Tent', meta: 'Already bought · <span class="gear-price">$449</span> · 17×17 ft, 9\'10" peak, Canvo polycotton, integrated floor' },
+    { id: 'b-pyramid', name: 'DOD Pyramid Tent (kids\' tent)', meta: 'For Aya + Zoe · <span class="gear-price">~$300</span> · Pitches next to Home Base' },
+    { id: 'b-power', name: 'EcoFlow River 2 + 60W Solar Panel Bundle', meta: 'Recommended buy · <span class="gear-price">~$259</span> · 256 Wh LiFePO4, useful beyond this trip' },
+    { id: 'b-fans', name: '2× Rechargeable Tent Fans', meta: 'Critical for FL June nights · <span class="gear-price">~$90</span> · Treva 10" or Coleman OneSource' },
+    { id: 'b-tarp', name: '12×16 Rain/Sun Tarp + 4 Poles', meta: 'Over picnic table · <span class="gear-price">~$60</span>' },
+    { id: 'b-stakes', name: 'MSR Groundhog Stakes (8-pack)', meta: 'Stock stakes weak in FL sand · <span class="gear-price">~$25</span>' },
+    { id: 'b-thermacell', name: 'Thermacell MR300 or E55', meta: 'No-see-um zone at picnic table · <span class="gear-price">~$30-45</span>' },
+    { id: 'b-lights', name: 'USB String Lights', meta: 'Inside tent via E-port · <span class="gear-price">~$25</span>' },
+    { id: 'b-lantern', name: 'Rechargeable Lantern', meta: 'Picnic table light · <span class="gear-price">~$60</span>' },
+    { id: 'b-headlamps', name: 'Headlamps w/ Red Mode (×6)', meta: 'One per person · turtle nesting season · <span class="gear-price">~$140</span>' },
+    { id: 'b-mattresses', name: '2 Queen + 2 Twin Air Mattresses', meta: 'Home Base: 2 queens (Scott+Ashley, Saja+Olive) · Pyramid: 2 twins (Aya, Zoe) · <span class="gear-price">~$180-240</span>' },
+    { id: 'b-footprints', name: '2× Footprint Tarps', meta: 'Under both tents · <span class="gear-price">~$50</span>' },
+    { id: 'b-picaridin', name: 'Picaridin 20% Spray (×2)', meta: 'Better than DEET for no-see-ums · <span class="gear-price">~$16</span>' },
+  ];
+
+  function esc(s) {
+    return String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  }
+  function newId(prefix) {
+    return prefix + '-' + Date.now().toString(36) + Math.random().toString(36).slice(2,5);
+  }
+  function inEditMode() { return document.body.classList.contains('edit-mode'); }
+
+  function loadBuy() {
+    try {
+      const raw = localStorage.getItem(BUY_DATA_KEY);
+      buyData = raw ? JSON.parse(raw) : JSON.parse(JSON.stringify(DEFAULT_BUY));
+    } catch (e) { buyData = JSON.parse(JSON.stringify(DEFAULT_BUY)); }
+    buyData.forEach((it, i) => { if (!it.id) it.id = newId('b'); });
+  }
+  function saveBuy() {
+    try { localStorage.setItem(BUY_DATA_KEY, JSON.stringify(buyData)); } catch (e) {}
+  }
+
+  function render() {
+    const el = document.getElementById('buy-list');
+    if (!el) return;
+    let h = '';
+    buyData.forEach((it, i) => {
+      h += `<div class="gear-card ${it.owned ? 'owned' : ''}" data-i="${i}">`;
+      h += `<div><div class="gear-name">${esc(it.name)}</div><div class="gear-meta">${it.meta}</div></div>`;
+      h += `<button class="buy-del" data-del="buy" title="Delete">✕</button>`;
+      h += `</div>`;
+    });
+    h += `<button class="buy-add" data-add="buy">+ Add gear item</button>`;
+    el.innerHTML = h;
+  }
+
+  function bind() {
+    document.addEventListener('click', (e) => {
+      const del = e.target.closest('#buy .buy-del');
+      if (del) {
+        if (!inEditMode()) return;
+        e.stopPropagation();
+        const card = del.closest('.gear-card');
+        const i = +card.dataset.i;
+        if (confirm(`Delete "${buyData[i].name}"?`)) {
+          buyData.splice(i, 1);
+          render(); saveBuy();
+        }
+        return;
+      }
+      const add = e.target.closest('#buy .buy-add');
+      if (add) {
+        if (!inEditMode()) return;
+        e.stopPropagation();
+        const name = prompt('Item name:');
+        if (!name || !name.trim()) return;
+        const meta = prompt('Details (price, notes, etc.):') || '';
+        buyData.push({ id: newId('b'), name: name.trim(), meta: meta.trim() });
+        render(); saveBuy();
+        return;
+      }
+      const card = e.target.closest('#buy .gear-card');
+      if (card && inEditMode()) {
+        const i = +card.dataset.i;
+        const cur = buyData[i];
+        const name = prompt('Item name (prefix with "✓" if already owned):', cur.name);
+        if (name === null) return;
+        if (name.trim()) {
+          cur.name = name.trim();
+          cur.owned = /^✓/.test(name.trim());
+        }
+        const meta = prompt('Details:', cur.meta);
+        if (meta !== null) cur.meta = meta.trim();
+        render(); saveBuy();
+        return;
+      }
+    });
+  }
+
+  function start() {
+    loadBuy();
+    render();
+    bind();
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', start);
+  } else {
+    start();
+  }
+})();
+</script>
 </body>
 </html>
