@@ -887,6 +887,335 @@
     .overview-cards { grid-template-columns: repeat(5, 1fr); }
     .hero-image { height: 340px; }
   }
+
+  /* === OPTIONAL TAG ON SCHEDULE === */
+  .day-optional {
+    display: inline-block;
+    background: var(--sun);
+    color: var(--navy-dark);
+    font-family: 'Courier New', monospace;
+    font-size: 9px;
+    letter-spacing: 1.5px;
+    font-weight: 700;
+    padding: 2px 6px;
+    border-radius: 2px;
+    margin-left: 6px;
+    vertical-align: middle;
+  }
+
+  /* === OTHER ACTIVITIES === */
+  .opt-card {
+    background: white;
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    padding: 14px 16px;
+    margin-bottom: 10px;
+    border-left: 4px solid var(--sea);
+    box-shadow: 0 1px 4px rgba(10, 59, 92, 0.04);
+  }
+  .opt-card.maybe { border-left-color: var(--sun); }
+  .opt-card.free  { border-left-color: var(--check-green); }
+  .opt-card.kid   { border-left-color: var(--coral); }
+  .opt-card.heat  { border-left-color: var(--navy); }
+  .opt-card.adult { border-left-color: var(--soft-ink); }
+  .opt-badges { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 8px; }
+  .opt-badge {
+    display: inline-block;
+    font-family: 'Courier New', monospace;
+    font-size: 9px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    padding: 3px 7px;
+    border-radius: 2px;
+    font-weight: 700;
+  }
+  .opt-badge.maybe { background: var(--sun); color: var(--navy-dark); }
+  .opt-badge.free  { background: var(--check-green); color: white; }
+  .opt-badge.kid   { background: var(--coral); color: white; }
+  .opt-badge.heat  { background: var(--navy); color: var(--sand); }
+  .opt-badge.adult { background: var(--soft-ink); color: white; }
+  .opt-badge.morn  { background: var(--sea); color: white; }
+  .opt-badge.eve   { background: var(--sun-deep); color: white; }
+  .opt-name {
+    font-family: 'Georgia', serif;
+    font-weight: 900;
+    font-size: 16px;
+    color: var(--navy);
+    margin-bottom: 4px;
+    letter-spacing: -0.3px;
+  }
+  .opt-desc { font-size: 13px; color: var(--soft-ink); line-height: 1.5; margin-bottom: 6px; }
+  .opt-meta { font-family: 'Courier New', monospace; font-size: 11px; color: var(--soft-ink); line-height: 1.5; opacity: 0.85; }
+  .opt-meta strong { color: var(--sun-deep); }
+  .opt-link {
+    display: inline-block;
+    margin-top: 8px;
+    font-family: 'Courier New', monospace;
+    font-size: 11px;
+    letter-spacing: 0.5px;
+    color: var(--sea-deep);
+    text-decoration: none;
+    border-bottom: 1px dotted var(--sea-deep);
+    font-weight: 700;
+    padding-bottom: 1px;
+  }
+  .opt-link:active { color: var(--coral); }
+
+  /* === FOOD / MEALS === */
+  .food-section { padding: 0 24px 30px; }
+  .food-stats {
+    display: flex;
+    gap: 14px;
+    margin: 0 0 16px;
+    padding: 12px 14px;
+    background: var(--sand-light);
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    font-family: 'Courier New', monospace;
+    font-size: 11px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--navy);
+    flex-wrap: wrap;
+  }
+  .food-stats strong { color: var(--sun-deep); font-size: 13px; }
+  .food-subhead {
+    font-family: 'Georgia', serif;
+    font-size: 22px;
+    font-weight: 900;
+    color: var(--navy);
+    letter-spacing: -0.5px;
+    margin: 24px 0 12px;
+    padding-bottom: 6px;
+    border-bottom: 2px solid var(--navy);
+  }
+  .meal-day {
+    background: white;
+    border: 1px solid var(--line);
+    border-left: 4px solid var(--sea);
+    border-radius: 6px;
+    padding: 12px 14px;
+    margin-bottom: 12px;
+    box-shadow: 0 1px 4px rgba(10, 59, 92, 0.04);
+  }
+  .meal-day-header { border-bottom: 1px dotted var(--line); padding-bottom: 8px; margin-bottom: 10px; }
+  .meal-day-date {
+    font-family: 'Courier New', monospace;
+    font-size: 11px;
+    letter-spacing: 1.5px;
+    color: var(--sun-deep);
+    text-transform: uppercase;
+    font-weight: 700;
+    margin-bottom: 2px;
+  }
+  .meal-day-title { font-family: 'Georgia', serif; font-size: 16px; font-weight: 900; color: var(--navy); }
+  .meal-slot { padding: 10px 0; border-bottom: 1px dotted rgba(212,196,160,0.5); }
+  .meal-slot:last-child { border-bottom: none; }
+  .meal-slot-label {
+    font-family: 'Courier New', monospace;
+    font-size: 10px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--soft-ink);
+    margin-bottom: 6px;
+    font-weight: 700;
+  }
+  .meal-options { display: flex; flex-direction: column; gap: 6px; }
+  .meal-option {
+    border: 1.5px solid var(--line);
+    background: white;
+    padding: 8px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.15s;
+    user-select: none;
+  }
+  .meal-option:active { transform: scale(0.99); }
+  .meal-option.selected {
+    background: var(--sand-light);
+    border-color: var(--sun);
+    box-shadow: inset 4px 0 0 var(--sun);
+    padding-left: 14px;
+  }
+  .meal-option-text { font-size: 14px; color: var(--ink); font-family: 'Georgia', serif; line-height: 1.35; }
+  .meal-option.out .meal-option-text::before { content: '↗ '; color: var(--sun-deep); font-weight: 900; }
+  .meal-option-note {
+    font-family: 'Courier New', monospace;
+    font-size: 11px;
+    color: var(--soft-ink);
+    margin-top: 3px;
+    opacity: 0.85;
+    line-height: 1.4;
+  }
+  .rest-card {
+    background: white;
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    padding: 12px 14px;
+    margin-bottom: 8px;
+    box-shadow: 0 1px 4px rgba(10, 59, 92, 0.04);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    cursor: pointer;
+    transition: all 0.15s;
+    user-select: none;
+  }
+  .rest-card:active { transform: scale(0.99); }
+  .rest-card.starred { background: var(--sand-light); border-color: var(--sun); }
+  .rest-star { font-size: 24px; line-height: 1; flex-shrink: 0; color: var(--line); transition: color 0.2s; }
+  .rest-card.starred .rest-star { color: var(--sun); }
+  .rest-content { flex: 1; min-width: 0; }
+  .rest-name { font-family:'Georgia',serif; font-weight: 900; font-size: 15px; color: var(--navy); margin-bottom: 2px; }
+  .rest-desc { font-family:'Courier New',monospace; font-size: 11px; color: var(--soft-ink); line-height: 1.4; }
+  .rest-desc .rest-tag { color: var(--sun-deep); font-weight: 700; margin-right: 6px; }
+  .shop-intro {
+    font-family: 'Courier New', monospace;
+    font-size: 11px;
+    color: var(--soft-ink);
+    line-height: 1.5;
+    margin-bottom: 14px;
+    padding: 10px 12px;
+    background: var(--sand-paper);
+    border-left: 3px solid var(--sun);
+    border-radius: 3px;
+  }
+  .shop-group { margin-bottom: 18px; }
+  .shop-group-title {
+    font-family: 'Courier New', monospace;
+    font-size: 11px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--navy);
+    padding: 6px 0;
+    border-bottom: 1px solid var(--line);
+    margin-bottom: 6px;
+    font-weight: 700;
+  }
+  .shop-item {
+    font-size: 13px;
+    padding: 5px 0;
+    line-height: 1.4;
+    color: var(--ink);
+    font-family: 'Georgia', serif;
+    border-bottom: 1px dotted rgba(212,196,160,0.4);
+    display: flex;
+    gap: 8px;
+  }
+  .shop-item:last-child { border-bottom: none; }
+  .shop-item .qty {
+    flex-shrink: 0;
+    min-width: 64px;
+    font-family: 'Courier New', monospace;
+    font-size: 11px;
+    color: var(--sun-deep);
+    font-weight: 700;
+    padding-top: 2px;
+  }
+  .shop-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    cursor: pointer;
+    transition: opacity 0.2s;
+    user-select: none;
+  }
+  .shop-item:active { opacity: 0.7; }
+  .shop-check {
+    width: 20px;
+    height: 20px;
+    border: 2px solid var(--navy);
+    border-radius: 3px;
+    background: white;
+    flex-shrink: 0;
+    margin-top: 1px;
+    position: relative;
+    transition: all 0.2s;
+  }
+  .shop-item.checked .shop-check {
+    background: var(--check-green);
+    border-color: var(--check-green);
+  }
+  .shop-item.checked .shop-check::after {
+    content: '';
+    position: absolute;
+    left: 5px;
+    top: 1px;
+    width: 5px;
+    height: 11px;
+    border: solid white;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+  }
+  .shop-item.checked .qty,
+  .shop-item.checked > span:nth-child(3) {
+    text-decoration: line-through;
+    color: var(--soft-ink);
+    opacity: 0.5;
+  }
+
+  /* === FOOD EDIT MODE === */
+  /* affordances are always rendered; CSS shows them only when body.edit-mode AND inside #food */
+  #food .food-del, #food .food-add { display: none; }
+  body.edit-mode #food .food-del {
+    display: inline-block;
+    background: none;
+    border: 1.5px solid var(--coral);
+    color: var(--coral);
+    font-size: 13px;
+    line-height: 1;
+    cursor: pointer;
+    padding: 3px 7px;
+    border-radius: 3px;
+    margin-left: 8px;
+    font-weight: 900;
+    flex-shrink: 0;
+  }
+  body.edit-mode #food .food-del:active { background: var(--coral); color: white; }
+  body.edit-mode #food .food-add {
+    display: inline-block;
+    background: var(--sand-light);
+    border: 1.5px dashed var(--sun-deep);
+    color: var(--sun-deep);
+    font-family: 'Courier New', monospace;
+    font-size: 11px;
+    letter-spacing: 1px;
+    font-weight: 700;
+    padding: 6px 12px;
+    border-radius: 3px;
+    cursor: pointer;
+    margin-top: 8px;
+    width: 100%;
+    text-align: left;
+  }
+  body.edit-mode #food .food-add:active { background: var(--sand); }
+  /* In edit mode, items become flex containers so del btn sits at right */
+  body.edit-mode #food .meal-option,
+  body.edit-mode #food .rest-card,
+  body.edit-mode #food .shop-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+  }
+  body.edit-mode #food .meal-option > div:first-child,
+  body.edit-mode #food .shop-item > span:nth-child(2),
+  body.edit-mode #food .rest-card > .rest-content {
+    flex: 1;
+  }
+  /* Edit-mode hint banner */
+  #food .food-edit-banner { display: none; }
+  body.edit-mode #food .food-edit-banner {
+    display: block;
+    background: var(--coral);
+    color: white;
+    padding: 10px 14px;
+    border-radius: 4px;
+    font-family: 'Courier New', monospace;
+    font-size: 11px;
+    letter-spacing: 0.5px;
+    margin-bottom: 14px;
+    line-height: 1.5;
+  }
 </style>
 </head>
 <body>
@@ -930,7 +1259,7 @@
         </svg>
         <div>
           <div class="stat-label">Crew</div>
-          <div class="stat-value">5 Humans</div>
+          <div class="stat-value">6 Humans</div>
         </div>
       </div>
       <div class="stat">
@@ -951,12 +1280,15 @@
     <button class="tab active" data-section="overview">Overview</button>
     <button class="tab" data-section="schedule">Schedule</button>
     <button class="tab" data-section="surf">Surf Camp</button>
+    <button class="tab" data-section="optional">Other Activities</button>
+    <button class="tab" data-section="food">Food</button>
     <button class="tab" data-section="shared">Family Gear</button>
     <button class="tab" data-section="scott">Scott</button>
     <button class="tab" data-section="ashley">Ashley</button>
     <button class="tab" data-section="saja">Saja</button>
     <button class="tab" data-section="olive">Olive</button>
     <button class="tab" data-section="aya">Aya</button>
+    <button class="tab" data-section="zoe">Zoe</button>
     <button class="tab" data-section="buy">To Buy</button>
   </div>
 </nav>
@@ -1028,13 +1360,13 @@
     </div>
     
     <div class="day-card charter">
-      <div class="day-date">Fri · Jun 26 · 🎣 Charter Day</div>
+      <div class="day-date">Fri · Jun 26 · 🎣 Charter Day <span class="day-optional">OPTIONAL</span></div>
       <div class="day-title">6am with Capt. Tony</div>
       <div class="day-desc">Inshore charter, 4 hours. Trout, redfish, mackerel. Back by 11. Cook the catch over the fire tonight.</div>
     </div>
     
     <div class="day-card water">
-      <div class="day-date">Sat · Jun 27 · 🛶 Paddle Day</div>
+      <div class="day-date">Sat · Jun 27 · 🛶 Paddle Day <span class="day-optional">OPTIONAL</span></div>
       <div class="day-title">Big Lagoon + Glow Paddle</div>
       <div class="day-desc">Morning kayak at Big Lagoon. Pool afternoon. 7:30pm Glow Paddle sunset tour — LED boards, ~90 min.</div>
     </div>
@@ -1105,6 +1437,203 @@
     <div class="info-card-body">
       Gulf in June is usually small and glassy in the morning. Waterboyz pivots between surf, skim, and paddle skills based on conditions — they're honest that they can't guarantee rideable waves daily. <strong>This is ideal for beginners.</strong> The girls will pop up on the first or second day.
     </div>
+  </div>
+</section>
+
+<!-- ============ OTHER ACTIVITIES ============ -->
+<section class="section" id="optional">
+  <div class="gear-section">
+    <div class="info-card" style="margin: 0 0 20px;">
+      <div class="info-card-title">★ Other Activities</div>
+      <div class="info-card-body">
+        The menu of extras — pick from these closer to the day based on weather, energy, and the crew's vote. <strong>Maybe</strong> = not booked yet.
+      </div>
+    </div>
+
+    <div class="opt-card maybe">
+      <div class="opt-badges">
+        <span class="opt-badge maybe">Maybe</span>
+        <span class="opt-badge morn">Early Morning</span>
+      </div>
+      <div class="opt-name">🎣 6am Inshore Charter w/ Capt. Tony</div>
+      <div class="opt-desc">4-hour inshore trip — trout, redfish, mackerel; cook the catch that night.</div>
+      <div class="opt-meta"><strong>~$600 total</strong> · Best fit Fri Jun 26 · Bring polarized shades, dry bag, motion sickness meds</div>
+      <a class="opt-link" href="https://www.google.com/search?q=Capt+Tony+inshore+charter+Pensacola" target="_blank" rel="noopener">Find Capt. Tony ↗</a>
+    </div>
+
+    <div class="opt-card maybe">
+      <div class="opt-badges">
+        <span class="opt-badge maybe">Maybe</span>
+        <span class="opt-badge eve">Sunset</span>
+      </div>
+      <div class="opt-name">🌊 Sunset Glow Paddle</div>
+      <div class="opt-desc">LED-lit SUPs on calm bay water — fish glow under the board, stars overhead.</div>
+      <div class="opt-meta"><strong>~$50-65/person</strong> · Sat Jun 27 · 90 min · Swimsuit + rash guard</div>
+      <a class="opt-link" href="https://www.google.com/search?q=glow+paddle+night+SUP+tour+Pensacola+Beach" target="_blank" rel="noopener">Find a Glow Paddle outfitter ↗</a>
+    </div>
+
+    <div class="opt-card maybe">
+      <div class="opt-badges">
+        <span class="opt-badge maybe">Maybe</span>
+        <span class="opt-badge morn">Morning</span>
+      </div>
+      <div class="opt-name">🛶 Big Lagoon Kayak</div>
+      <div class="opt-desc">Calm 700-acre state park 30 min west — kayak the shallow lagoon for dolphins, herons, sometimes manatees.</div>
+      <div class="opt-meta"><strong>$6/vehicle + rentals ~$30/kayak</strong> · Best morning before the wind picks up · Pack lunch + sunscreen</div>
+      <a class="opt-link" href="https://www.google.com/search?q=Big+Lagoon+State+Park+Pensacola+kayak" target="_blank" rel="noopener">Big Lagoon State Park ↗</a>
+    </div>
+
+    <div class="opt-card heat">
+      <div class="opt-badges">
+        <span class="opt-badge heat">Heat Escape</span>
+        <span class="opt-badge free">Free</span>
+        <span class="opt-badge kid">Kid Pick</span>
+      </div>
+      <div class="opt-name">✈️ National Naval Aviation Museum</div>
+      <div class="opt-desc">Free, indoor, AC — Blue Angels jets overhead, real cockpits to climb in.</div>
+      <div class="opt-meta"><strong>Free</strong> · 30 min from camp · Easy half-day · Restaurant on site</div>
+      <a class="opt-link" href="https://www.navalaviationmuseum.org/" target="_blank" rel="noopener">navalaviationmuseum.org ↗</a>
+    </div>
+
+    <div class="opt-card free">
+      <div class="opt-badges">
+        <span class="opt-badge free">Free</span>
+        <span class="opt-badge morn">Morning</span>
+      </div>
+      <div class="opt-name">🛩️ Blue Angels Practice Show</div>
+      <div class="opt-desc">Free full-show practice over NAS Pensacola most Tue + Wed mornings.</div>
+      <div class="opt-meta"><strong>Free</strong> · ~11:30am · Confirm schedule day-of · Pairs with the museum</div>
+      <a class="opt-link" href="https://www.blueangels.navy.mil/" target="_blank" rel="noopener">blueangels.navy.mil ↗</a>
+    </div>
+
+    <div class="opt-card">
+      <div class="opt-badges">
+        <span class="opt-badge morn">Morning</span>
+      </div>
+      <div class="opt-name">🐬 Dolphin / Sunset Cruise</div>
+      <div class="opt-desc">2-hour bay cruise with near-guaranteed dolphin sightings.</div>
+      <div class="opt-meta"><strong>~$40/person</strong> · Multiple operators on the boardwalk · Morning or sunset slots</div>
+      <a class="opt-link" href="https://www.google.com/search?q=Pensacola+Beach+dolphin+cruise" target="_blank" rel="noopener">Compare operators ↗</a>
+    </div>
+
+    <div class="opt-card kid">
+      <div class="opt-badges">
+        <span class="opt-badge kid">Kid Pick</span>
+        <span class="opt-badge free">Free</span>
+      </div>
+      <div class="opt-name">🚲 Bike the Seashore Loop</div>
+      <div class="opt-desc">Paved no-traffic road from camp past gun batteries, ~6 mi round trip.</div>
+      <div class="opt-meta"><strong>Free if you bring bikes</strong> · Rentals ~$20 each in Gulf Breeze · Go early</div>
+      <a class="opt-link" href="https://www.nps.gov/guis/planyourvisit/fort-pickens-area.htm" target="_blank" rel="noopener">Fort Pickens area · NPS ↗</a>
+    </div>
+
+    <div class="opt-card">
+      <div class="opt-badges">
+        <span class="opt-badge eve">Sunset</span>
+      </div>
+      <div class="opt-name">🎣 Pensacola Beach Fishing Pier</div>
+      <div class="opt-desc">1,471 ft pier at Casino Beach — best sunset spot on the island.</div>
+      <div class="opt-meta"><strong>$2 walk-on / $7.50 fisher</strong> · Open 24 hrs · King mackerel, cobia in the water</div>
+      <a class="opt-link" href="https://www.google.com/search?q=Pensacola+Beach+Fishing+Pier+hours" target="_blank" rel="noopener">Pier info ↗</a>
+    </div>
+
+    <div class="opt-card heat">
+      <div class="opt-badges">
+        <span class="opt-badge heat">Heat Escape</span>
+      </div>
+      <div class="opt-name">🏛️ Pensacola Lighthouse + Museum</div>
+      <div class="opt-desc">177-step climb up an 1859 lighthouse — wraparound view of the bay.</div>
+      <div class="opt-meta"><strong>~$9 adults, $5 kids</strong> · 30 min from camp · Pairs with aviation museum day</div>
+      <a class="opt-link" href="https://www.pensacolalighthouse.org/" target="_blank" rel="noopener">pensacolalighthouse.org ↗</a>
+    </div>
+
+    <div class="opt-card">
+      <div class="opt-badges">
+        <span class="opt-badge morn">Saturday Only</span>
+      </div>
+      <div class="opt-name">🥖 Palafox Market (Sat morning)</div>
+      <div class="opt-desc">Big downtown farmers + makers market — produce, breakfast tacos, live music.</div>
+      <div class="opt-meta"><strong>Free</strong> · Sat 9am-2pm · Downtown Palafox St</div>
+      <a class="opt-link" href="https://www.palafoxmarket.com/" target="_blank" rel="noopener">palafoxmarket.com ↗</a>
+    </div>
+
+    <div class="opt-card">
+      <div class="opt-badges">
+        <span class="opt-badge morn">Anytime</span>
+      </div>
+      <div class="opt-name">🦐 Joe Patti's Seafood</div>
+      <div class="opt-desc">Pensacola's legendary seafood market — buy fresh, cook over the fire.</div>
+      <div class="opt-meta"><strong>Varies</strong> · 30 min from camp · Charter backup · Ice for the drive back</div>
+      <a class="opt-link" href="https://joepattis.com/" target="_blank" rel="noopener">joepattis.com ↗</a>
+    </div>
+
+    <div class="opt-card">
+      <div class="opt-badges">
+        <span class="opt-badge eve">Evening</span>
+        <span class="opt-badge kid">Kid Pick</span>
+      </div>
+      <div class="opt-name">🏴‍☠️ Pensacola Pirate Cruise</div>
+      <div class="opt-desc">Costumed crew, water cannons, treasure hunt — for the kids.</div>
+      <div class="opt-meta"><strong>~$35/person</strong> · 90 min · Leaves from Palafox Pier</div>
+      <a class="opt-link" href="https://www.google.com/search?q=Pensacola+pirate+cruise+kids" target="_blank" rel="noopener">Find a sailing ↗</a>
+    </div>
+
+    <div class="opt-card">
+      <div class="opt-badges">
+        <span class="opt-badge free">Free</span>
+        <span class="opt-badge eve">Evening</span>
+      </div>
+      <div class="opt-name">🐢 Sea Turtle Nesting Walk</div>
+      <div class="opt-desc">Ranger-led night walks during nesting season — red light only, possible hatchling release.</div>
+      <div class="opt-meta"><strong>Free</strong> · Check the visitor center day-of · Mid-June is peak</div>
+      <a class="opt-link" href="https://www.nps.gov/guis/planyourvisit/event-calendar.htm" target="_blank" rel="noopener">Gulf Islands events · NPS ↗</a>
+    </div>
+
+    <div class="opt-card adult">
+      <div class="opt-badges">
+        <span class="opt-badge adult">Adults Optional</span>
+        <span class="opt-badge eve">Evening</span>
+      </div>
+      <div class="opt-name">🎸 Flora-Bama Lounge</div>
+      <div class="opt-desc">Legendary FL/AL state-line roadhouse with live music every night.</div>
+      <div class="opt-meta"><strong>No cover most nights</strong> · 30 min west · Adults-only night out</div>
+      <a class="opt-link" href="https://www.florabama.com/" target="_blank" rel="noopener">florabama.com ↗</a>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============ FOOD / MEALS ============ -->
+<section class="section" id="food">
+  <div class="food-section">
+    <div class="info-card" style="margin: 0 0 16px;">
+      <div class="info-card-title">★ Eat Plan</div>
+      <div class="info-card-body">
+        Mostly cook at camp, with a handful of meals out. <strong>Tap an option to pick it</strong> for that meal slot — only one per slot. <strong>Star</strong> the restaurants you'd want to try. Picks save on this device.
+      </div>
+    </div>
+
+    <div class="food-stats">
+      <div><strong id="food-meals-count">0 / 0</strong> meals planned</div>
+      <div><strong id="food-rest-count">0</strong> restaurants starred</div>
+      <button class="toolbar-btn" data-toggle-edit style="margin-left: auto;">✎ Edit Mode</button>
+    </div>
+
+    <div class="food-edit-banner">
+      <strong>EDIT MODE</strong> · Tap text to rename · Tap ✕ to delete · Tap <em style="font-style:normal; background:rgba(255,255,255,0.2); padding:1px 5px; border-radius:2px;">+ Add</em> to add new · Changes save on this device · Toggle ✏ Edit Mode again to exit.
+    </div>
+
+    <div class="food-subhead">🍳 Meal Plan</div>
+    <div id="meal-plan"></div>
+
+    <div class="food-subhead">🍤 Restaurant Picks</div>
+    <div id="rest-list"></div>
+
+    <div class="food-subhead">🛒 Camp Shopping List</div>
+    <div class="shop-intro">
+      Built around an 8-day camp menu. <strong>Hit Publix on Gulf Breeze Pkwy on Sun Jun 21 before pulling into camp.</strong> Adjust based on meal picks above. Buy ice (×2 bags) every other day at the camp store.
+    </div>
+    <div id="shop-list"></div>
   </div>
 </section>
 
@@ -1198,14 +1727,16 @@ const DEFAULT_PEOPLE = {
     categories: [
       { title: 'Shelter & Sleep', tag: 'BIG ITEMS', items: [
         { text: 'DOD Home Base Tent (in cargo)', note: 'Test pitch in yard 2 weeks before' },
+        { text: 'DOD Pyramid Tent (kids\' tent)', note: 'Aya + Zoe sharing. Pitch next to the Home Base.' },
         { text: 'Tent stakes (MSR Groundhogs) + mallet' },
-        { text: 'Footprint tarp under tent' },
+        { text: 'Footprint tarp under Home Base' },
+        { text: 'Footprint tarp under Pyramid' },
         { text: '10×12 backup tarp', note: 'For unexpected weather, gear cover' },
         { text: '12×16 rain/sun tarp + 4 poles', note: 'Over picnic table' },
         { text: '50 ft paracord + tarp guylines' },
         { text: 'Extra long sand stakes (8+)' },
-        { text: '2 queen air mattresses + pump' },
-        { text: '1 twin air mattress + pump' },
+        { text: '2 queen air mattresses + pump', note: 'Home Base: Scott+Ashley, Saja+Olive' },
+        { text: '2 twin air mattresses for kids\' tent', note: 'Aya + Zoe each get their own in the Pyramid' },
         { text: 'Backup battery pump', note: 'When the AC pump dies at 9pm' },
       ]},
       { title: 'Power & Lights', tag: 'ELECTRIC', items: [
@@ -1233,8 +1764,8 @@ const DEFAULT_PEOPLE = {
         { text: 'Camp kettle' },
         { text: 'Cutting board + knife set' },
         { text: 'Spatula, tongs, big spoon' },
-        { text: 'Plates, bowls, mugs (×5)' },
-        { text: 'Utensils (×5 sets)' },
+        { text: 'Plates, bowls, mugs (×6)' },
+        { text: 'Utensils (×6 sets)' },
         { text: 'Dish soap + sponges + drying towel' },
         { text: 'Trash bags (×10)' },
         { text: 'Ziplocs (gallon + quart)' },
@@ -1246,8 +1777,8 @@ const DEFAULT_PEOPLE = {
         { text: 'Firewood (or buy on site)' },
         { text: 'Kindling + fire starters' },
         { text: 'S\'mores kit' },
-        { text: 'Roasting sticks (×5)' },
-        { text: 'Camp chairs (×5)' },
+        { text: 'Roasting sticks (×6)' },
+        { text: 'Camp chairs (×6)' },
         { text: '10×10 EZ-up canopy' },
         { text: 'Thermacell + refill cartridges' },
         { text: 'Picaridin spray (×2)' },
@@ -1255,7 +1786,7 @@ const DEFAULT_PEOPLE = {
         { text: 'Bucket' },
       ]},
       { title: 'Beach Day Gear', tag: 'SAND', items: [
-        { text: 'Beach chairs (×5)' },
+        { text: 'Beach chairs (×6)' },
         { text: 'Beach umbrella (large)' },
         { text: 'Beach blanket / large towel' },
         { text: 'Boogie boards (×3)' },
@@ -1318,6 +1849,7 @@ const DEFAULT_PEOPLE = {
         { text: 'Prescription meds (full week + 2 buffer days)' },
         { text: 'Phone + charger' },
         { text: 'Wallet, license, insurance card' },
+        { text: 'Headlamp w/ red mode', note: 'Red light required on the beach — turtle nesting season' },
       ]},
       { title: 'Adventure', tag: 'GO GEAR', items: [
         { text: 'Fishing license', note: 'Check FL rules even for charter' },
@@ -1360,6 +1892,7 @@ const DEFAULT_PEOPLE = {
         { text: 'Microfiber towel' },
         { text: 'Prescription meds' },
         { text: 'Phone + charger' },
+        { text: 'Headlamp w/ red mode', note: 'Red light only on the beach after dark — turtle nesting' },
       ]},
       { title: 'Surf Camp Week!', tag: '🏄', items: [
         { text: 'Rash guard', note: 'Bring 2 — one wet, one dry' },
@@ -1403,6 +1936,7 @@ const DEFAULT_PEOPLE = {
         { text: 'Sunscreen' },
         { text: 'Any meds' },
         { text: 'Phone + charger + power bank' },
+        { text: 'Headlamp w/ red mode', note: 'Red light only on the beach after dark — turtle nesting' },
       ]},
       { title: 'If You Do Surf Camp', tag: '🏄', items: [
         { text: 'Confirm with Ashley if you want in', note: 'It\'s $200 · ages 7+ · Mon–Thu 9–12' },
@@ -1441,6 +1975,7 @@ const DEFAULT_PEOPLE = {
         { text: 'Towel' },
         { text: 'Sunscreen' },
         { text: 'Phone + charger' },
+        { text: 'Headlamp w/ red mode', note: 'Red light only on the beach after dark — turtle nesting' },
       ]},
       { title: 'Surf Camp Week!', tag: '🏄', items: [
         { text: 'Rash guard (×2)' },
@@ -1481,6 +2016,7 @@ const DEFAULT_PEOPLE = {
         { text: 'Hairbrush + ties' },
         { text: 'Beach towel (a fun one!)' },
         { text: 'Sunscreen (kid version)' },
+        { text: 'Your own headlamp w/ red mode', note: 'Red light only on the beach — baby sea turtles get confused by white light!' },
       ]},
       { title: 'Surf Camp Week!', tag: '🏄', items: [
         { text: 'Rash guard', note: 'Will get a t-shirt at camp' },
@@ -1510,6 +2046,67 @@ const DEFAULT_PEOPLE = {
         { text: 'Surf a wave at Waterboyz camp!' },
         { text: 'Ask Capt. Tony lots of questions' },
         { text: 'Find a perfect shell to bring home' },
+      ]},
+    ]
+  },
+  zoe: {
+    name: 'Zoe',
+    icon: '<circle cx="12" cy="7" r="4"/><path d="M5 21v-2a7 7 0 0 1 14 0v2"/>',
+    categories: [
+      { title: 'Zoe\'s Clothes', tag: '7 DAYS', items: [
+        { text: 'T-shirts (×7)', note: 'You\'ll get sandy' },
+        { text: 'Shorts (×5)' },
+        { text: 'Swimsuits (×2)' },
+        { text: 'Long-sleeve sun shirt' },
+        { text: 'Underwear (×8)', note: 'Bring extras!' },
+        { text: 'Socks (×5)' },
+        { text: 'Pajamas (×2)' },
+        { text: 'Cozy hoodie' },
+        { text: 'Sun hat + sunglasses' },
+        { text: 'Water shoes + sandals + sneakers' },
+      ]},
+      { title: 'Zoe\'s Stuff', tag: 'DAILY', items: [
+        { text: 'Toothbrush + toothpaste' },
+        { text: 'Hairbrush + ties' },
+        { text: 'Beach towel (a fun one!)' },
+        { text: 'Sunscreen (kid version)' },
+        { text: 'Any meds you take', note: 'Plus a note for Scott/Ashley with dosing' },
+        { text: 'Headlamp w/ red mode', note: 'Red light only on the beach — baby sea turtles get confused by white light!' },
+      ]},
+      { title: 'Surf Camp Week!', tag: '🏄', items: [
+        { text: 'Rash guard', note: 'Will get a t-shirt at camp' },
+        { text: 'Surf-friendly swimsuit' },
+        { text: 'Lunch for each surf day' },
+        { text: 'Water bottle with your name on it' },
+        { text: 'Reef-safe sunscreen' },
+        { text: 'Towel for camp' },
+        { text: 'A swimming buddy attitude', note: 'Be brave! You\'ve got this!' },
+      ]},
+      { title: 'Zoe\'s Beach Stuff', tag: '🏖️', items: [
+        { text: 'Boogie board (your own!)' },
+        { text: 'Sand toys to share with Aya' },
+        { text: 'Goggles' },
+        { text: 'Snorkel + mask' },
+      ]},
+      { title: 'For Fun', tag: '⭐', items: [
+        { text: 'A book or two' },
+        { text: 'Cards, UNO, or a small game', note: 'Bring one Aya hasn\'t played' },
+        { text: 'Colored pencils + sketchbook' },
+        { text: 'Stuffie for sleeping' },
+        { text: 'Glow stick or two', note: 'For night at the campsite!' },
+      ]},
+      { title: 'Special Adventures', tag: '✨', items: [
+        { text: 'Look for sea turtle tracks at sunrise with Aya' },
+        { text: 'See the Milky Way on a dark night' },
+        { text: 'Stand up on a surfboard at Waterboyz camp!' },
+        { text: 'Find a perfect shell to bring home' },
+      ]},
+      { title: 'For Zoe\'s Parents', tag: '📋 IMPORTANT', items: [
+        { text: 'Signed permission / consent form', note: 'For Scott + Ashley to have on hand' },
+        { text: 'Health insurance card (copy)' },
+        { text: 'Emergency contact numbers' },
+        { text: 'Any allergies / meds documented' },
+        { text: 'Pediatrician phone number' },
       ]},
     ]
   },
@@ -1932,6 +2529,473 @@ async function init() {
 }
 
 init();
+</script>
+
+
+<script>
+// === FOOD PAGE — view + edit mode (self-contained, localStorage) ===
+(function () {
+  const FOOD_STATE_KEY = 'pensacola_food_state_v1';   // selections + stars
+  const FOOD_DATA_KEY  = 'pensacola_food_data_v1';    // mutable data (after edits)
+  let foodState = {};
+  let foodData = null;
+
+  const DEFAULT_FOOD = {
+  days: [
+    { date: 'Sun · Jun 21', label: 'Arrival', slots: [
+      { label: 'Lunch (drive day)', key: 'd1-lunch', options: [
+        { id: 'a', text: 'Pack PB&J + chips for the car' },
+        { id: 'b', text: 'Drive-through stop near I-10', out: true },
+      ]},
+      { label: 'Dinner (camp setup)', key: 'd1-dinner', options: [
+        { id: 'a', text: 'Hot dogs + buns over the fire', note: 'Lowest effort first night' },
+        { id: 'b', text: 'Burgers + corn on the cob' },
+        { id: 'c', text: 'Pizza pickup en route', out: true, note: 'Mellow Mushroom in Gulf Breeze' },
+      ]},
+    ]},
+    { date: 'Mon · Jun 22 · 🏄 Surf Camp Day 1', label: '', slots: [
+      { label: 'Breakfast (early — camp 9am)', key: 'd2-bfast', options: [
+        { id: 'a', text: 'Bacon + eggs + toast' },
+        { id: 'b', text: 'Breakfast burritos (pre-made foil)' },
+        { id: 'c', text: 'Bagels + cream cheese + fruit' },
+      ]},
+      { label: 'Lunch (post-camp ~12:30)', key: 'd2-lunch', options: [
+        { id: 'a', text: 'Sandwiches + chips at the beach' },
+        { id: 'b', text: 'Quesadillas at camp' },
+        { id: 'c', text: 'Out: boardwalk pickup', out: true },
+      ]},
+      { label: 'Dinner', key: 'd2-dinner', options: [
+        { id: 'a', text: 'Camp burgers + grilled corn' },
+        { id: 'b', text: 'Fish tacos (frozen mahi)' },
+        { id: 'c', text: 'Out: Peg Leg Pete\'s', out: true, note: 'Pensacola Beach classic' },
+      ]},
+    ]},
+    { date: 'Tue · Jun 23 · 🏄 Surf Camp Day 2', label: '', slots: [
+      { label: 'Breakfast (early)', key: 'd3-bfast', options: [
+        { id: 'a', text: 'Bagels + fruit (quick)' },
+        { id: 'b', text: 'Oatmeal + bananas' },
+      ]},
+      { label: 'Lunch (post-camp)', key: 'd3-lunch', options: [
+        { id: 'a', text: 'Out: Native Cafe on Pensacola Beach', out: true },
+        { id: 'b', text: 'Beach sandwiches' },
+      ]},
+      { label: 'Dinner', key: 'd3-dinner', options: [
+        { id: 'a', text: 'Camp spaghetti + salad' },
+        { id: 'b', text: 'Pulled pork sliders (Crock-Pot)' },
+        { id: 'c', text: 'Out: Flounder\'s Chowder House', out: true },
+      ]},
+    ]},
+    { date: 'Wed · Jun 24 · 🏄 Surf Camp Day 3', label: '', slots: [
+      { label: 'Breakfast', key: 'd4-bfast', options: [
+        { id: 'a', text: 'Pancakes + bacon' },
+        { id: 'b', text: 'Yogurt + granola + fruit' },
+      ]},
+      { label: 'Lunch (post-camp)', key: 'd4-lunch', options: [
+        { id: 'a', text: 'Tuna salad wraps' },
+        { id: 'b', text: 'Camp quesadillas' },
+      ]},
+      { label: 'Dinner', key: 'd4-dinner', options: [
+        { id: 'a', text: 'Steak + foil-pack potatoes' },
+        { id: 'b', text: 'Low-country shrimp boil' },
+        { id: 'c', text: 'Out: Crabs (Pensacola Beach, on the sand)', out: true },
+      ]},
+    ]},
+    { date: 'Thu · Jun 25 · 🏄 Surf Camp Day 4 (LAST)', label: '', slots: [
+      { label: 'Breakfast', key: 'd5-bfast', options: [
+        { id: 'a', text: 'Eggs + bacon' },
+        { id: 'b', text: 'Granola + yogurt + fruit' },
+      ]},
+      { label: 'Lunch (celebration)', key: 'd5-lunch', options: [
+        { id: 'a', text: 'Out: celebration lunch in town', out: true },
+        { id: 'b', text: 'Big camp picnic' },
+      ]},
+      { label: 'Dinner', key: 'd5-dinner', options: [
+        { id: 'a', text: 'Camp chicken + sides' },
+        { id: 'b', text: 'Pasta night' },
+        { id: 'c', text: 'Out: McGuire\'s Irish Pub', out: true, note: 'Pensacola institution' },
+      ]},
+    ]},
+    { date: 'Fri · Jun 26 · 🎣 Charter (maybe)', label: '', slots: [
+      { label: 'Breakfast', key: 'd6-bfast', options: [
+        { id: 'a', text: 'Bars + coffee (charter dawn departure)', note: 'For folks on the boat' },
+        { id: 'b', text: 'Big camp breakfast (no charter)' },
+      ]},
+      { label: 'Lunch', key: 'd6-lunch', options: [
+        { id: 'a', text: 'Sandwiches packed for the boat' },
+        { id: 'b', text: 'Camp lunch (sandwiches or leftovers)' },
+      ]},
+      { label: 'Dinner', key: 'd6-dinner', options: [
+        { id: 'a', text: '🐟 Cook the catch over the fire' },
+        { id: 'b', text: 'Fresh fish from Joe Patti\'s', note: 'Backup if no charter' },
+        { id: 'c', text: 'Out: The Fish House (downtown waterfront)', out: true },
+      ]},
+    ]},
+    { date: 'Sat · Jun 27 · 🛶 Paddle (maybe)', label: '', slots: [
+      { label: 'Breakfast', key: 'd7-bfast', options: [
+        { id: 'a', text: 'Big farewell camp breakfast' },
+        { id: 'b', text: 'French toast + bacon' },
+      ]},
+      { label: 'Lunch', key: 'd7-lunch', options: [
+        { id: 'a', text: 'Picnic packed for Big Lagoon' },
+        { id: 'b', text: 'Beach sandwiches' },
+        { id: 'c', text: 'Use-up-the-leftovers lunch' },
+      ]},
+      { label: 'Dinner (family dinner)', key: 'd7-dinner', options: [
+        { id: 'a', text: 'Out: Peg Leg Pete\'s', out: true },
+        { id: 'b', text: 'Out: The Grand Marlin (nicer)', out: true },
+        { id: 'c', text: 'Out: McGuire\'s Irish Pub', out: true },
+        { id: 'd', text: 'Last camp cookout: steaks + s\'mores' },
+      ]},
+    ]},
+    { date: 'Sun · Jun 28', label: 'Pack Out', slots: [
+      { label: 'Breakfast', key: 'd8-bfast', options: [
+        { id: 'a', text: 'Out: Ruby Slipper in Pensacola', out: true, note: 'Already on the schedule' },
+        { id: 'b', text: 'Quick camp pack-up breakfast (cereal + fruit)' },
+      ]},
+      { label: 'Lunch (drive day)', key: 'd8-lunch', options: [
+        { id: 'a', text: 'Drive-through pickup', out: true },
+        { id: 'b', text: 'Pack leftover sandwiches from cooler' },
+      ]},
+    ]},
+  ],
+  restaurants: [
+    { id: 'peglegpetes', name: 'Peg Leg Pete\'s', tag: 'CASUAL', desc: 'Oyster bar + seafood, kids welcome, on Pensacola Beach. Expect a wait — put your name in early.' },
+    { id: 'flounders', name: 'Flounder\'s Chowder House', tag: 'CASUAL', desc: 'Beachfront seafood with a sand-floor patio. Live music most nights. Kid-friendly.' },
+    { id: 'crabs', name: 'Crabs · We Got \'Em', tag: 'NICER', desc: 'On the sand at Pensacola Beach. Sunset views, full menu, good for the family-dinner-out night.' },
+    { id: 'grandmarlin', name: 'The Grand Marlin', tag: 'NICE', desc: 'Upscale Gulf seafood on Pensacola Bay. Best raw bar in town. Reservation recommended.' },
+    { id: 'fishhouse', name: 'The Fish House', tag: 'NICE', desc: 'Downtown waterfront. Famous for "Grits à Ya Ya." Sunset over Pensacola Bay.' },
+    { id: 'mcguires', name: 'McGuire\'s Irish Pub', tag: 'INSTITUTION', desc: 'Pensacola landmark. Massive menu, hand-pinched dollar bills on the ceiling. Loud, fun, large portions.' },
+    { id: 'nativecafe', name: 'Native Cafe', tag: 'BREAKFAST', desc: 'Pensacola Beach breakfast + lunch. Walkable post-surf. Bloody Marys for the grown-ups.' },
+    { id: 'rubyslipper', name: 'Ruby Slipper', tag: 'BREAKFAST', desc: 'NOLA-style brunch downtown. Banana foster pain perdu, eggs Cochon. Last-day pack-out tradition.' },
+    { id: 'fivesisters', name: 'Five Sisters Blues Cafe', tag: 'SOUL', desc: 'Soul food + blues in downtown Pensacola\'s Belmont-DeVilliers district. Fried catfish, shrimp + grits.' },
+    { id: 'joepattideli', name: 'Joe Patti\'s Original Deli', tag: 'CASUAL', desc: 'Deli inside the legendary seafood market. Killer Italian sub for a beach lunch.' },
+  ],
+  shopping: [
+    { group: 'Breakfast', items: [
+      { qty: '2 doz', text: 'Eggs' }, { qty: '1 lb', text: 'Bacon' },
+      { qty: '1 pkg', text: 'Breakfast sausage links' }, { qty: '1 loaf', text: 'Sandwich bread (also for toast)' },
+      { qty: '6', text: 'Bagels (everything + plain)' }, { qty: '1 tub', text: 'Cream cheese' },
+      { qty: '1 box', text: 'Pancake mix (just-add-water)' }, { qty: '1 btl', text: 'Maple syrup' },
+      { qty: '1 box', text: 'Oatmeal packets' }, { qty: '1 bag', text: 'Granola' },
+      { qty: '6', text: 'Individual Greek yogurts' }, { qty: '1 ctn', text: 'OJ' },
+      { qty: '1 ctn', text: 'Milk (half gallon)' }, { qty: '1 ctn', text: 'Half-and-half for coffee' },
+      { qty: '1 bag', text: 'Coffee beans' },
+    ]},
+    { group: 'Lunch staples', items: [
+      { qty: '1 loaf', text: 'Extra sandwich bread' }, { qty: '1 pkg', text: 'Tortillas (12-pack)' },
+      { qty: '1 lb', text: 'Deli turkey' }, { qty: '1 lb', text: 'Deli ham' },
+      { qty: '1 pkg', text: 'Sliced cheese' }, { qty: '1 brick', text: 'Shredded cheese' },
+      { qty: '2 cans', text: 'Tuna' }, { qty: '1 jar', text: 'Mayo' }, { qty: '1 jar', text: 'Mustard' },
+      { qty: '1 jar', text: 'Peanut butter' }, { qty: '1 jar', text: 'Jelly' },
+      { qty: '1 head', text: 'Lettuce' }, { qty: '4', text: 'Tomatoes' }, { qty: '1', text: 'Red onion' },
+      { qty: '1 pkg', text: 'Pickles' },
+    ]},
+    { group: 'Dinner proteins', items: [
+      { qty: '2 lb', text: 'Ground beef (burgers)' }, { qty: '6+2', text: 'Burger buns' },
+      { qty: '1 pkg', text: 'Hot dogs (Hebrew National)' }, { qty: '1 pkg', text: 'Hot dog buns' },
+      { qty: '4-6', text: 'Steaks (ribeye or NY strip)' }, { qty: '1.5 lb', text: 'Shrimp (peeled + deveined)' },
+      { qty: '1 lb', text: 'Pulled pork or shoulder for Crock-Pot' },
+      { qty: '1 lb', text: 'Frozen mahi or tilapia for fish tacos' },
+      { qty: '2 cans', text: 'Chicken (for chicken salad)' },
+      { qty: '—', text: 'Catch from charter (if happens) OR Joe Patti\'s fresh fish' },
+    ]},
+    { group: 'Sides + carbs', items: [
+      { qty: '8 ears', text: 'Corn on the cob' }, { qty: '5 lb', text: 'Russet potatoes (foil packs)' },
+      { qty: '1 bag', text: 'Rice (instant or boil-in-bag)' }, { qty: '1 box', text: 'Spaghetti' },
+      { qty: '1 jar', text: 'Marinara sauce' }, { qty: '1 bag', text: 'Salad mix (×2)' },
+      { qty: '1 btl', text: 'Italian dressing' }, { qty: '1 box', text: 'Cornbread mix' },
+      { qty: '2 cans', text: 'Chili beans' }, { qty: '2 cans', text: 'Crushed tomatoes' },
+      { qty: '1 bag', text: 'Slaw mix (for tacos)' }, { qty: '1 pkg', text: 'Taco shells or extra tortillas' },
+    ]},
+    { group: 'Pantry + cooking', items: [
+      { qty: '1 sm', text: 'Olive oil' }, { qty: '1 stick', text: 'Butter' },
+      { qty: '—', text: 'Salt + pepper (already on Family Gear)' }, { qty: '1 head', text: 'Garlic' },
+      { qty: '1 pkt', text: 'Taco seasoning' }, { qty: '1 btl', text: 'BBQ sauce' },
+      { qty: '1 btl', text: 'Hot sauce (Crystal or Cholula)' }, { qty: '1 btl', text: 'Lime juice' },
+      { qty: '1 can', text: 'Cooking spray' },
+    ]},
+    { group: 'Snacks', items: [
+      { qty: '2 bags', text: 'Chips (kettle + tortilla)' }, { qty: '1 bag', text: 'Pretzels' },
+      { qty: '1 box', text: 'Granola bars' }, { qty: '1 box', text: 'Goldfish or animal crackers' },
+      { qty: '6', text: 'Apples' }, { qty: '6', text: 'Oranges' },
+      { qty: '2 lb', text: 'Grapes' }, { qty: '1', text: 'Watermelon' },
+      { qty: '1 pkg', text: 'Trail mix' },
+    ]},
+    { group: 'Drinks', items: [
+      { qty: '2 cases', text: 'Bottled water' }, { qty: '12-pk', text: 'Sparkling water' },
+      { qty: '8', text: 'Gatorade / electrolyte drinks (post-surf)' },
+      { qty: '1 ctn', text: 'Apple juice or kid juice boxes' },
+      { qty: '1 12-pk', text: 'Beer (for Scott + Ashley)' }, { qty: '1-2 btl', text: 'Wine' },
+      { qty: '—', text: 'Ice — buy ×2 bags every other day at camp store' },
+    ]},
+    { group: 'S\'mores + treats', items: [
+      { qty: '1 bag', text: 'Marshmallows (jumbo)' }, { qty: '6+', text: 'Hershey\'s chocolate bars' },
+      { qty: '1 box', text: 'Graham crackers' },
+      { qty: '1 box', text: 'Ice cream sandwiches', note: 'If cooler space allows' },
+    ]},
+    { group: 'Disposables + cleanup', items: [
+      { qty: '1 roll', text: 'Aluminum foil (heavy-duty)' }, { qty: '1 box', text: 'Gallon ziplocs' },
+      { qty: '1 box', text: 'Quart ziplocs' }, { qty: '3 rolls', text: 'Paper towels' },
+      { qty: '1 pkg', text: 'Napkins' }, { qty: '1 pkg', text: 'Compostable plates (backup to reusables)' },
+      { qty: '1 btl', text: 'Dish soap (biodegradable)' }, { qty: '1 box', text: 'Contractor trash bags' },
+    ]},
+  ],
+  };
+
+  function esc(s) {
+    return String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  }
+  function newId(prefix) {
+    return prefix + '-' + Date.now().toString(36) + Math.random().toString(36).slice(2,5);
+  }
+  function inEditMode() { return document.body.classList.contains('edit-mode'); }
+
+  function loadFood() {
+    try {
+      const stateRaw = localStorage.getItem(FOOD_STATE_KEY);
+      foodState = stateRaw ? JSON.parse(stateRaw) : {};
+    } catch (e) { foodState = {}; }
+    try {
+      const dataRaw = localStorage.getItem(FOOD_DATA_KEY);
+      foodData = dataRaw ? JSON.parse(dataRaw) : JSON.parse(JSON.stringify(DEFAULT_FOOD));
+    } catch (e) { foodData = JSON.parse(JSON.stringify(DEFAULT_FOOD)); }
+    // Ensure every shopping item has a stable id for check-state tracking
+    foodData.shopping.forEach((g, gi) => {
+      g.items.forEach((it, ii) => {
+        if (!it.id) it.id = `shop-${gi}-${ii}-${newId('s')}`;
+      });
+    });
+  }
+  function saveFoodState() {
+    try { localStorage.setItem(FOOD_STATE_KEY, JSON.stringify(foodState)); } catch (e) {}
+  }
+  function saveFoodData() {
+    try { localStorage.setItem(FOOD_DATA_KEY, JSON.stringify(foodData)); } catch (e) {}
+  }
+
+  function renderFood() {
+    const planEl = document.getElementById('meal-plan');
+    const restEl = document.getElementById('rest-list');
+    const shopEl = document.getElementById('shop-list');
+    if (!planEl || !restEl || !shopEl) return;
+
+    let h = '';
+    foodData.days.forEach((day, di) => {
+      h += `<div class="meal-day"><div class="meal-day-header"><div class="meal-day-date">${esc(day.date)}</div>${day.label ? `<div class="meal-day-title">${esc(day.label)}</div>` : ''}</div>`;
+      day.slots.forEach((slot, si) => {
+        h += `<div class="meal-slot"><div class="meal-slot-label">${esc(slot.label)}</div><div class="meal-options">`;
+        slot.options.forEach((opt, oi) => {
+          h += `<div class="meal-option ${opt.out ? 'out' : ''}" data-slot="${esc(slot.key)}" data-opt="${esc(opt.id)}" data-di="${di}" data-si="${si}" data-oi="${oi}">`;
+          h += `<div><div class="meal-option-text">${esc(opt.text)}</div>${opt.note ? `<div class="meal-option-note">↳ ${esc(opt.note)}</div>` : ''}</div>`;
+          h += `<button class="food-del" data-del="meal" title="Delete option">✕</button>`;
+          h += `</div>`;
+        });
+        h += `<button class="food-add" data-add="meal" data-di="${di}" data-si="${si}">+ Add option</button>`;
+        h += `</div></div>`;
+      });
+      h += `</div>`;
+    });
+    planEl.innerHTML = h;
+
+    h = '';
+    foodData.restaurants.forEach((r, ri) => {
+      h += `<div class="rest-card" data-rest="${esc(r.id)}" data-ri="${ri}">`;
+      h += `<div class="rest-star">★</div>`;
+      h += `<div class="rest-content"><div class="rest-name">${esc(r.name)}</div><div class="rest-desc"><span class="rest-tag">${esc(r.tag)}</span>${esc(r.desc)}</div></div>`;
+      h += `<button class="food-del" data-del="rest" title="Delete restaurant">✕</button>`;
+      h += `</div>`;
+    });
+    h += `<button class="food-add" data-add="rest">+ Add restaurant</button>`;
+    restEl.innerHTML = h;
+
+    h = '';
+    foodData.shopping.forEach((g, gi) => {
+      h += `<div class="shop-group"><div class="shop-group-title">${esc(g.group)}</div>`;
+      g.items.forEach((it, ii) => {
+        h += `<div class="shop-item" data-gi="${gi}" data-ii="${ii}" data-shop="${esc(it.id)}"><div class="shop-check"></div><span class="qty">${esc(it.qty)}</span><span>${esc(it.text)}${it.note ? ` <em style="color:var(--soft-ink); font-size:11px;">— ${esc(it.note)}</em>` : ''}</span><button class="food-del" data-del="shop" title="Delete item">✕</button></div>`;
+      });
+      h += `<button class="food-add" data-add="shop" data-gi="${gi}">+ Add to ${esc(g.group)}</button>`;
+      h += `</div>`;
+    });
+    shopEl.innerHTML = h;
+  }
+
+  function applyFoodState() {
+    document.querySelectorAll('#meal-plan .meal-option').forEach(el => {
+      el.classList.toggle('selected', foodState[`meal_${el.dataset.slot}`] === el.dataset.opt);
+    });
+    document.querySelectorAll('#rest-list .rest-card').forEach(el => {
+      el.classList.toggle('starred', !!foodState[`rest_${el.dataset.rest}`]);
+    });
+    document.querySelectorAll('#shop-list .shop-item').forEach(el => {
+      el.classList.toggle('checked', !!foodState[`shop_${el.dataset.shop}`]);
+    });
+    let total = 0, planned = 0;
+    foodData.days.forEach(d => d.slots.forEach(s => { total++; if (foodState[`meal_${s.key}`]) planned++; }));
+    const stars = foodData.restaurants.filter(r => foodState[`rest_${r.id}`]).length;
+    const mc = document.getElementById('food-meals-count');
+    const rc = document.getElementById('food-rest-count');
+    if (mc) mc.textContent = `${planned} / ${total}`;
+    if (rc) rc.textContent = stars;
+  }
+
+  function bindFood() {
+    document.addEventListener('click', (e) => {
+      // Delete buttons (only act in edit mode)
+      const del = e.target.closest('#food .food-del');
+      if (del) {
+        if (!inEditMode()) return;
+        e.stopPropagation();
+        const type = del.dataset.del;
+        if (type === 'meal') {
+          const opt = del.closest('.meal-option');
+          const di = +opt.dataset.di, si = +opt.dataset.si, oi = +opt.dataset.oi;
+          const slotKey = opt.dataset.slot;
+          const optId = opt.dataset.opt;
+          if (confirm('Delete this option?')) {
+            foodData.days[di].slots[si].options.splice(oi, 1);
+            if (foodState[`meal_${slotKey}`] === optId) delete foodState[`meal_${slotKey}`];
+            renderFood(); applyFoodState(); saveFoodData(); saveFoodState();
+          }
+        } else if (type === 'rest') {
+          const card = del.closest('.rest-card');
+          const ri = +card.dataset.ri;
+          const id = card.dataset.rest;
+          const name = foodData.restaurants[ri].name;
+          if (confirm(`Delete "${name}"?`)) {
+            foodData.restaurants.splice(ri, 1);
+            delete foodState[`rest_${id}`];
+            renderFood(); applyFoodState(); saveFoodData(); saveFoodState();
+          }
+        } else if (type === 'shop') {
+          const row = del.closest('.shop-item');
+          const gi = +row.dataset.gi, ii = +row.dataset.ii;
+          const item = foodData.shopping[gi].items[ii];
+          if (confirm(`Delete "${item.text}"?`)) {
+            delete foodState[`shop_${item.id}`];
+            foodData.shopping[gi].items.splice(ii, 1);
+            renderFood(); applyFoodState(); saveFoodData(); saveFoodState();
+          }
+        }
+        return;
+      }
+      // Add buttons (only act in edit mode)
+      const add = e.target.closest('#food .food-add');
+      if (add) {
+        if (!inEditMode()) return;
+        e.stopPropagation();
+        const type = add.dataset.add;
+        if (type === 'meal') {
+          const di = +add.dataset.di, si = +add.dataset.si;
+          const text = prompt('New meal option (prefix with "Out:" for restaurant):');
+          if (text && text.trim()) {
+            const isOut = /^out:/i.test(text.trim());
+            foodData.days[di].slots[si].options.push({
+              id: newId('opt'), text: text.trim(), out: isOut
+            });
+            renderFood(); applyFoodState(); saveFoodData();
+          }
+        } else if (type === 'rest') {
+          const name = prompt('Restaurant name:');
+          if (!name || !name.trim()) return;
+          const desc = prompt('One-line description (cuisine, vibe, notes):') || '';
+          const tag = (prompt('Tag (CASUAL / NICER / NICE / INSTITUTION / BREAKFAST / SOUL):') || 'CASUAL').toUpperCase();
+          foodData.restaurants.push({
+            id: newId('rest'), name: name.trim(), tag: tag.trim(), desc: desc.trim()
+          });
+          renderFood(); applyFoodState(); saveFoodData();
+        } else if (type === 'shop') {
+          const gi = +add.dataset.gi;
+          const text = prompt('Item name:');
+          if (!text || !text.trim()) return;
+          const qty = prompt('Quantity (e.g. "1 lb", "2 cans", "—"):') || '—';
+          foodData.shopping[gi].items.push({ id: newId('s'), qty: qty.trim(), text: text.trim() });
+          renderFood(); applyFoodState(); saveFoodData();
+        }
+        return;
+      }
+      // Meal option click — rename in edit mode, otherwise select
+      const opt = e.target.closest('#meal-plan .meal-option');
+      if (opt) {
+        if (inEditMode()) {
+          const di = +opt.dataset.di, si = +opt.dataset.si, oi = +opt.dataset.oi;
+          const cur = foodData.days[di].slots[si].options[oi];
+          const text = prompt('Rename option (prefix "Out:" for restaurant):', cur.text);
+          if (text === null) return;
+          if (text.trim()) {
+            cur.text = text.trim();
+            cur.out = /^out:/i.test(text.trim());
+            const note = prompt('Note (optional, leave blank to clear):', cur.note || '');
+            if (note !== null) cur.note = note.trim() || undefined;
+            renderFood(); applyFoodState(); saveFoodData();
+          }
+          return;
+        }
+        const key = `meal_${opt.dataset.slot}`;
+        foodState[key] = foodState[key] === opt.dataset.opt ? null : opt.dataset.opt;
+        applyFoodState();
+        saveFoodState();
+        return;
+      }
+      // Restaurant click — rename in edit mode, otherwise star
+      const card = e.target.closest('#rest-list .rest-card');
+      if (card) {
+        if (inEditMode()) {
+          const ri = +card.dataset.ri;
+          const cur = foodData.restaurants[ri];
+          const name = prompt('Restaurant name:', cur.name);
+          if (name === null) return;
+          if (name.trim()) cur.name = name.trim();
+          const tag = prompt('Tag:', cur.tag);
+          if (tag !== null) cur.tag = (tag || cur.tag).toUpperCase().trim();
+          const desc = prompt('Description:', cur.desc);
+          if (desc !== null) cur.desc = desc.trim();
+          renderFood(); applyFoodState(); saveFoodData();
+          return;
+        }
+        const key = `rest_${card.dataset.rest}`;
+        foodState[key] = !foodState[key];
+        applyFoodState();
+        saveFoodState();
+        return;
+      }
+      // Shopping item click — rename in edit mode, otherwise toggle check
+      const shop = e.target.closest('#shop-list .shop-item');
+      if (shop) {
+        if (inEditMode()) {
+          e.stopPropagation();
+          const gi = +shop.dataset.gi, ii = +shop.dataset.ii;
+          const cur = foodData.shopping[gi].items[ii];
+          const text = prompt('Item:', cur.text);
+          if (text === null) return;
+          if (text.trim()) cur.text = text.trim();
+          const qty = prompt('Quantity:', cur.qty);
+          if (qty !== null) cur.qty = qty.trim() || '—';
+          renderFood(); applyFoodState(); saveFoodData();
+          return;
+        }
+        const key = `shop_${shop.dataset.shop}`;
+        foodState[key] = !foodState[key];
+        shop.classList.toggle('checked');
+        saveFoodState();
+        return;
+      }
+    });
+  }
+
+  function start() {
+    loadFood();
+    renderFood();
+    applyFoodState();
+    bindFood();
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', start);
+  } else {
+    start();
+  }
+})();
 </script>
 
 </body>
