@@ -1217,6 +1217,36 @@
     line-height: 1.5;
   }
 
+  /* === TO BUY: tappable to mark bought === */
+  #buy .gear-card {
+    cursor: pointer;
+    transition: background 0.25s, border-color 0.25s, color 0.25s;
+    border-left: 4px solid transparent;
+  }
+  #buy .gear-card:active { opacity: 0.85; }
+  #buy .gear-card.owned {
+    background: rgba(43, 138, 74, 0.10);
+    border-left: 4px solid var(--check-green);
+    border-color: var(--check-green);
+    opacity: 1;
+  }
+  #buy .gear-card.owned .gear-name {
+    text-decoration: line-through;
+    color: var(--check-green);
+  }
+  #buy .gear-card.owned .gear-name::before {
+    content: '✓ ';
+    color: var(--check-green);
+    font-weight: 900;
+    text-decoration: none;
+    display: inline-block;
+    margin-right: 2px;
+  }
+  #buy .gear-card.owned .gear-meta {
+    color: var(--soft-ink);
+    opacity: 0.75;
+  }
+
   /* === TO BUY EDIT MODE === */
   #buy .buy-del, #buy .buy-add { display: none; }
   body.edit-mode #buy .buy-del {
@@ -3011,7 +3041,7 @@ init();
   let buyData = null;
 
   const DEFAULT_BUY = [
-    { id: 'b-tent', owned: true, name: '✓ DOD Home Base Tent', meta: 'Already bought · <span class="gear-price">$449</span> · 17×17 ft, 9\'10" peak, Canvo polycotton, integrated floor' },
+    { id: 'b-tent', owned: true, name: 'DOD Home Base Tent', meta: 'Already bought · <span class="gear-price">$449</span> · 17×17 ft, 9\'10" peak, Canvo polycotton, integrated floor' },
     { id: 'b-pyramid', name: 'DOD Pyramid Tent (kids\' tent)', meta: 'For Aya + Zoe · <span class="gear-price">~$300</span> · Pitches next to Home Base' },
     { id: 'b-power', name: 'EcoFlow River 2 + 60W Solar Panel Bundle', meta: 'Recommended buy · <span class="gear-price">~$259</span> · 256 Wh LiFePO4, useful beyond this trip' },
     { id: 'b-fans', name: '2× Rechargeable Tent Fans', meta: 'Critical for FL June nights · <span class="gear-price">~$90</span> · Treva 10" or Coleman OneSource' },
@@ -3085,18 +3115,22 @@ init();
         return;
       }
       const card = e.target.closest('#buy .gear-card');
-      if (card && inEditMode()) {
+      if (card) {
         const i = +card.dataset.i;
         const cur = buyData[i];
-        const name = prompt('Item name (prefix with "✓" if already owned):', cur.name);
-        if (name === null) return;
-        if (name.trim()) {
-          cur.name = name.trim();
-          cur.owned = /^✓/.test(name.trim());
+        if (inEditMode()) {
+          const name = prompt('Item name:', cur.name);
+          if (name === null) return;
+          if (name.trim()) cur.name = name.trim().replace(/^✓\s*/, '');
+          const meta = prompt('Details:', cur.meta);
+          if (meta !== null) cur.meta = meta.trim();
+          render(); saveBuy();
+          return;
         }
-        const meta = prompt('Details:', cur.meta);
-        if (meta !== null) cur.meta = meta.trim();
-        render(); saveBuy();
+        // View mode: tap toggles bought
+        cur.owned = !cur.owned;
+        card.classList.toggle('owned', cur.owned);
+        saveBuy();
         return;
       }
     });
