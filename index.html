@@ -1302,6 +1302,46 @@
     margin-bottom: 14px;
     line-height: 1.5;
   }
+
+  /* === CAMPERS DROPDOWN === */
+  .campers-menu {
+    position: fixed;
+    right: 12px;
+    top: 43px;
+    background: var(--navy-dark);
+    border: 1px solid var(--sun);
+    border-top: none;
+    border-radius: 0 0 6px 6px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+    z-index: 200;
+    min-width: 180px;
+    padding: 4px 0;
+  }
+  .campers-menu[hidden] { display: none; }
+  .campers-item {
+    display: block;
+    width: 100%;
+    background: none;
+    border: none;
+    color: var(--sand);
+    padding: 12px 18px;
+    font-family: 'Courier New', monospace;
+    font-size: 12px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    text-align: left;
+    cursor: pointer;
+    font-weight: 700;
+    border-left: 3px solid transparent;
+    transition: background 0.15s;
+  }
+  .campers-item:hover { background: rgba(255,255,255,0.06); }
+  .campers-item:active { background: rgba(232, 149, 70, 0.18); }
+  .campers-item.active {
+    color: var(--sun);
+    border-left-color: var(--sun);
+    background: rgba(232, 149, 70, 0.10);
+  }
 </style>
 </head>
 <body>
@@ -1368,14 +1408,17 @@
     <button class="tab" data-section="surf">Surf Camp</button>
     <button class="tab" data-section="optional">Other Activities</button>
     <button class="tab" data-section="food">Food</button>
-    <button class="tab" data-section="shared">Family Gear</button>
-    <button class="tab" data-section="scott">Scott</button>
-    <button class="tab" data-section="ashley">Ashley</button>
-    <button class="tab" data-section="saja">Saja</button>
-    <button class="tab" data-section="olive">Olive</button>
-    <button class="tab" data-section="aya">Aya</button>
-    <button class="tab" data-section="zoe">Zoe</button>
+    <button class="tab" data-section="campers-menu" id="campers-tab">Campers ▾</button>
     <button class="tab" data-section="buy">To Buy</button>
+  </div>
+  <div class="campers-menu" id="campers-menu" hidden>
+    <button class="campers-item" data-camper-section="shared">Family Gear</button>
+    <button class="campers-item" data-camper-section="scott">Scott</button>
+    <button class="campers-item" data-camper-section="ashley">Ashley</button>
+    <button class="campers-item" data-camper-section="saja">Saja</button>
+    <button class="campers-item" data-camper-section="olive">Olive</button>
+    <button class="campers-item" data-camper-section="aya">Aya</button>
+    <button class="campers-item" data-camper-section="zoe">Zoe</button>
   </div>
 </nav>
 
@@ -2353,17 +2396,35 @@ function escapeHtml(str) {
 
 // ============ EVENT HANDLERS ============
 function showSection(sectionId) {
+  // Special sentinel: Campers tab opens the dropdown, doesn't switch section
+  if (sectionId === 'campers-menu') {
+    const menu = document.getElementById('campers-menu');
+    if (menu) menu.hidden = !menu.hidden;
+    return;
+  }
+
   document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
   document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
-  
+  document.querySelectorAll('.campers-item').forEach(t => t.classList.remove('active'));
+
   const section = document.getElementById(sectionId);
   const tab = document.querySelector(`.tab[data-section="${sectionId}"]`);
-  
+
   if (section) section.classList.add('active');
   if (tab) {
     tab.classList.add('active');
     tab.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+  } else if (['shared','scott','ashley','saja','olive','aya','zoe'].includes(sectionId)) {
+    // It's a camper — light up the Campers tab and the dropdown item
+    const camperTab = document.getElementById('campers-tab');
+    if (camperTab) camperTab.classList.add('active');
+    const item = document.querySelector(`.campers-item[data-camper-section="${sectionId}"]`);
+    if (item) item.classList.add('active');
   }
+  // Close dropdown after navigating
+  const menu = document.getElementById('campers-menu');
+  if (menu) menu.hidden = true;
+
   window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
@@ -3149,5 +3210,25 @@ init();
   }
 })();
 </script>
+<script>
+// === Campers dropdown wiring ===
+(function () {
+  document.addEventListener('click', function (e) {
+    const item = e.target.closest('.campers-item');
+    if (item) {
+      e.stopPropagation();
+      if (typeof showSection === 'function') showSection(item.dataset.camperSection);
+      return;
+    }
+    // Click outside the menu or the Campers tab → close
+    const menu = document.getElementById('campers-menu');
+    if (!menu || menu.hidden) return;
+    const insideMenu = e.target.closest('#campers-menu');
+    const onCamperTab = e.target.closest('#campers-tab');
+    if (!insideMenu && !onCamperTab) menu.hidden = true;
+  });
+})();
+</script>
+
 </body>
 </html>
